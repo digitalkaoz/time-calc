@@ -1,0 +1,5 @@
+@import '../../../node_modules/material-design-lite/src/grid/grid';
+
+.rf-Form {
+  @extend .mdl-grid
+}

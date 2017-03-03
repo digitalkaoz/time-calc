@@ -1,0 +1,11 @@
+@import '../../../node_modules/material-design-lite/src/textfield/textfield';
+
+.mdl-textfield {
+  .mdl-textfield__input:focus ~ .mdl-textfield__error{
+      visibility: visible;
+  }
+
+  .mdl-textfield__error {
+    visibility: visible;
+  }
+}
