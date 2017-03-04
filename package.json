@@ -11,7 +11,8 @@
     "babel-watch": "^2.0.6",
     "concurrently": "^3.2.0",
     "node-sass": "^4.5.0",
-    "react-scripts": "^0.9"
+    "react-scripts": "^0.9",
+    "sw-precache": "^5.0.0"
   },
   "dependencies": {
     "boom": "^4.2.0",
@@ -40,7 +41,7 @@
     "start": "concurrently \"npm run server:start\" \"npm run client:start\"",
     "server:start": "babel-watch server/index.js",
     "client:start": "react-scripts start & npm run watch-css",
-    "client:build": "react-scripts build && npm run build-css",
+    "client:build": "react-scripts build && npm run build-css && sw-precache --config=sw-precache-config.js",
     "client:test": "react-scripts test --env=jsdom",
     "client:eject": "react-scripts eject"
   }

@@ -20,9 +20,9 @@ class Field extends React.Component {
         const classes = 'mdl-textfield mdl-js-textfield mdl-textfield--floating-label '+ (this.state.isError ? 'is-invalid' : '');
 
         return (
-            <div className="mdl-cell">
+            <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
                 <div className={classes}>
-                    <input className="mdl-textfield__input" type="text" id={this.props.select} value={this.state.value} onChange={this.onChange.bind(this)}/>
+                    <input className="mdl-textfield__input" type="text" id={this.props.select} value={this.state.value} onChange={this.onChange.bind(this)} placeholder="HH:mm"/>
                     <label className="mdl-textfield__label">{this.props.label}</label>
                     <ErrorList className="mdl-textfield__error" formValue={this.state.value} />
                 </div>
