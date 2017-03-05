@@ -1,7 +1,7 @@
 import Bottle from 'bottlejs';
 import Formatter from './Formatter';
 import Calculator from './Calculator';
-import Controller from '../server/Controller';
+import Controller from '../Controller';
 
 const b = new Bottle();
 

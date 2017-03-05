@@ -2,6 +2,7 @@ import React from 'react'
 import {Fieldset, createValue} from 'react-forms'
 import TimeField from '../TimeField/TimeField';
 import DisplayField from '../DisplayField/DisplayField';
+import SaveButton from '../SaveButton/SaveButton';
 import { connect } from 'react-redux'
 import {fetchCalculation} from '../../logic/actions/actions';
 
@@ -36,7 +37,7 @@ class Form extends React.Component {
 
     onChange(formValue) {
         if (formValue._errorList.length === 0) {
-            this.props.onChange(formValue);
+            this.props.calculate(formValue);
         }
         this.setState({formValue})
     }
@@ -44,10 +45,21 @@ class Form extends React.Component {
     render() {
         return (
             <Fieldset formValue={this.state.formValue} className="mdl-grid">
-                <TimeField select="start" label="Start Time"  />
-                <TimeField select="break" label="Break" />
-                <TimeField select="end" label="End Time"  />
-                <DisplayField label="Duration" value={this.props.time && this.props.time.duration ? this.props.time.duration : ''} />
+                <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                    <TimeField select="start" label="Start Time"  />
+                </div>
+                <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                    <TimeField select="break" label="Break" />
+                </div>
+                <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                    <TimeField select="end" label="End Time"  />
+                </div>
+                <div className="mdl-cell mdl-cell--2-col mdl-cell--3-col-tablet mdl-cell--5-col-phone">
+                    <DisplayField label="Duration" value={this.props.time && this.props.time.duration ? this.props.time.duration : ''} />
+                </div>
+                <div className="mdl-cell mdl-cell--1-col">
+                <SaveButton />
+                </div>
             </Fieldset>
         )
     }
@@ -55,13 +67,13 @@ class Form extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        time: state.calculateTime.times.response
+        time: state.calculate.current
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChange: (formValue) => {
+        calculate: (formValue) => {
             return dispatch(fetchCalculation(formValue))
         }
     }

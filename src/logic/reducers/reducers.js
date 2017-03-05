@@ -1,22 +1,30 @@
 import { combineReducers } from 'redux'
 
-import {fetchCalculation, CALCULATE} from '../actions/actions';
+import {CALCULATE, ADD_TIME} from '../actions/actions';
 
-const initialState = {
-    times: {}
-}
-
-function calculateTime(state = initialState, action) {
+function calculate(state = { current: {}}, action) {
     switch (action.type) {
         case CALCULATE:
             return Object.assign({}, state, {
-                times: typeof action.response === 'undefined' ? fetchCalculation(state.form) : action
-            })
+                current: action.response
+            });
         default:
             return state
     }
 }
+
+function timelist(state = {times: []}, action) {
+    switch (action.type) {
+        case ADD_TIME :
+            return Object.assign({}, state, {
+                times : [...state.times, action.time]
+            });
+        default:
+            return state
+    }
+}
+
 export default combineReducers({
-//    visibilityFilter,
-    calculateTime
+    timelist,
+    calculate
 })

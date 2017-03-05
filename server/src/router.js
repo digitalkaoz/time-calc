@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 import Boom from 'boom';
-import Container from '../shared/Container';
+import Container from './services/Container';
 import validator, {
     object,
     string,
