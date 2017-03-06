@@ -10,6 +10,5 @@ coverage
 build
 
 # misc
-/src/components/**/*.css
-
+src/**/*.css
 server/build
