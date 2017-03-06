@@ -2,9 +2,10 @@ import React from 'react'
 import {Fieldset, createValue} from 'react-forms'
 import TimeField from '../TimeField/TimeField';
 import DisplayField from '../DisplayField/DisplayField';
-import SaveButton from '../SaveButton/SaveButton';
 import { connect } from 'react-redux'
-import {fetchCalculation} from '../../logic/actions/actions';
+import {fetchCalculation, save} from '../../logic/actions/actions';
+import Button from './../Button/Button';
+import Moment from 'moment';
 
 import './Form.css';
 
@@ -42,6 +43,16 @@ class Form extends React.Component {
         this.setState({formValue})
     }
 
+    onReset() {
+        let formValue = createValue({
+            value: {},
+            onChange: this.onChange.bind(this),
+            schema: SCHEMA
+        });
+
+        this.setState({formValue});
+    }
+
     render() {
         return (
             <Fieldset formValue={this.state.formValue} className="mdl-grid">
@@ -54,11 +65,13 @@ class Form extends React.Component {
                 <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
                     <TimeField select="end" label="End Time"  />
                 </div>
-                <div className="mdl-cell mdl-cell--2-col mdl-cell--3-col-tablet mdl-cell--5-col-phone">
-                    <DisplayField label="Duration" value={this.props.time && this.props.time.duration ? this.props.time.duration : ''} />
+                <div className="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                    <DisplayField label="Duration" value={this.props.time.duration || ''} />
                 </div>
-                <div className="mdl-cell mdl-cell--1-col">
-                <SaveButton />
+                <div className="mdl-cell mdl-cell--1-col mdl-cell mdl-cell--5-col-tablet mdl-cell mdl-cell--6-col-phone">
+                    {this.props.time.duration &&
+                    <Button invoke={this.props.save} context={this} icon="add" classes="mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
+                    }
                 </div>
             </Fieldset>
         )
@@ -75,6 +88,19 @@ const mapDispatchToProps = (dispatch) => {
     return {
         calculate: (formValue) => {
             return dispatch(fetchCalculation(formValue))
+        },
+        save: (component) => {
+            if (component.props.time) {
+                let time = component.props.time;
+                time.day = Moment().format();
+
+                if (!time.break) {
+                    time.break = '0:00';
+                }
+
+                dispatch(save(time));
+                component.onReset();
+            }
         }
     }
 }

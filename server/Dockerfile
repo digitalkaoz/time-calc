@@ -1,5 +1,3 @@
 FROM node:7.7-onbuild
 
-ONBUILD ENV REACT_APP_SERVER /
-
 EXPOSE 3001

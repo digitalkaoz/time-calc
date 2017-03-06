@@ -14,6 +14,7 @@
     "sw-precache": "^5.0.0"
   },
   "dependencies": {
+    "csvwriter": "^1.3.0",
     "isomorphic-fetch": "^2.2.1",
     "material-design-lite": "^1.3.0",
     "moment": "^2.17.1",
@@ -24,7 +25,8 @@
     "react-redux": "^5.0.2",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "store": "^2.0.4"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",
@@ -32,9 +34,9 @@
     "dev": "concurrently \"cd server && npm run dev\" \"npm run client:start\" \"npm run watch-css\"",
     "start": "npm run client:build && npm start --prefix server",
     "client:start": "react-scripts start",
-    "client:build": "concurrently \"react-scripts build\" \"npm run build-css\" && sw-precache --config=sw-precache-config.js",
+    "client:build": "mv .env ._env && concurrently \"react-scripts build\" \"npm run build-css\" && sw-precache --config=sw-precache-config.js && mv ._env .env",
     "client:test": "react-scripts test --env=jsdom",
     "client:eject": "react-scripts eject",
-    "deploy" : "cd server && npm run deploy"
+    "deploy": "cd server && npm run deploy"
   }
 }

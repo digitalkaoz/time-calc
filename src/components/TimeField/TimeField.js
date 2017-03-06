@@ -11,7 +11,6 @@ class Field extends React.Component {
         let {formValue} = this.props;
 
         this.state = {
-            value: formValue.value,
             isError: formValue.errorList.length > 0
         };
     }
@@ -21,7 +20,7 @@ class Field extends React.Component {
 
         return (
             <div className={classes}>
-                <input className="mdl-textfield__input" type="text" id={this.props.select} value={this.state.value} onChange={this.onChange.bind(this)} placeholder="HH:mm"/>
+                <input className="mdl-textfield__input" type="text" id={this.props.select} value={this.props.formValue.value} onChange={this.onChange.bind(this)} placeholder="HH:mm"/>
                 <label className="mdl-textfield__label">{this.props.label}</label>
                 <ErrorList className="mdl-textfield__error" formValue={this.state.value} />
             </div>

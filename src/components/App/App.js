@@ -7,7 +7,6 @@ import "./App.css";
 import Form from "../Form/Form";
 import TimeList from "../TimeList/TimeList";
 
-
 const App = () => {
     return (
         <div className="mdl-layout mdl-layout--fixed-header">
