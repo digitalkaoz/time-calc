@@ -1,20 +1,19 @@
 
 export default class Controller {
+  calculator;
 
-    calculator;
+  constructor (calculator) {
+    this.calculator = calculator
+  }
 
-    constructor(calculator) {
-        this.calculator = calculator;
+  async calculate (ctx, next) {
+    ctx.body = {
+      start: ctx.query.start,
+      end: ctx.query.end,
+      break: ctx.query.break,
+      duration: this.calculator.calc(ctx.query['start'], ctx.query['end'], ctx.query['break'] || null)
     }
 
-    async calculate(ctx, next) {
-        ctx.body = {
-            start: ctx.query.start,
-            end: ctx.query.end,
-            break: ctx.query.break,
-            duration: this.calculator.calc(ctx.query['start'], ctx.query['end'], ctx.query['break'] || null)
-        };
-
-        next();
-    }
+    next()
+  }
 }

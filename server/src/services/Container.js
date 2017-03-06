@@ -1,20 +1,20 @@
-import Bottle from 'bottlejs';
-import Formatter from './Formatter';
-import Calculator from './Calculator';
-import Controller from '../Controller';
+import Bottle from 'bottlejs'
+import Formatter from './Formatter'
+import Calculator from './Calculator'
+import Controller from '../Controller'
 
-const b = new Bottle();
+const b = new Bottle()
 
 b.service('formatter', () => {
-    return new Formatter();
-});
+  return new Formatter()
+})
 
 b.service('calculator', () => {
-    return new Calculator(b.container.formatter);
-});
+  return new Calculator(b.container.formatter)
+})
 
 b.service('controller', () => {
-    return new Controller(b.container.calculator, b.container.formatter);
-});
+  return new Controller(b.container.calculator, b.container.formatter)
+})
 
-export default b;
+export default b

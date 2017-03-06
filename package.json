@@ -9,8 +9,11 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
     "concurrently": "^3.2.0",
+    "eslint": "^3.17.1",
+    "eslint-plugin-react": "^6.10.0",
     "node-sass": "^4.5.0",
     "react-scripts": "^0.9",
+    "standard": "^9.0.0",
     "sw-precache": "^5.0.0"
   },
   "dependencies": {
@@ -37,6 +40,7 @@
     "client:build": "mv .env ._env && concurrently \"react-scripts build\" \"npm run build-css\" && sw-precache --config=sw-precache-config.js && mv ._env .env",
     "client:test": "react-scripts test --env=jsdom",
     "client:eject": "react-scripts eject",
-    "deploy": "cd server && npm run deploy"
+    "deploy": "cd server && npm run deploy",
+    "cs": "standard --fix src/**/*.jsx server/src/**/*.js -v --parser babel-eslint"
   }
 }
