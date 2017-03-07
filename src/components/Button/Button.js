@@ -1,8 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import './Button.css';
+import autoBind from 'react-autobind';
 
 class Button extends React.Component {
+    constructor(props){
+        super(props);
+
+        autoBind(this);
+    }
 
     onClick() {
         this.props.invoke(this.props.context);
@@ -12,8 +18,8 @@ class Button extends React.Component {
         const classes = 'mdl-button mdl-js-button '+(this.props.classes || '');
 
         return (
-            <button className={classes} onClick={this.onClick.bind(this)}>
-                <i className="material-icons">{ this.props.icon}</i>
+            <button className={classes} onClick={this.onClick }>
+                <i className="material-icons">{ this.props.icon }</i>
             </button>
         );
     }

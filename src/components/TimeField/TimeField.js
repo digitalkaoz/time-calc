@@ -1,6 +1,7 @@
 import React from 'react'
 import {withFormValue, ErrorList} from 'react-forms'
 import 'material-design-lite/src/textfield/textfield';
+import autoBind from 'react-autobind';
 
 import './TimeField.css';
 
@@ -10,6 +11,7 @@ class Field extends React.Component {
         super(props);
         let {formValue} = this.props;
 
+        autoBind(this);
         this.state = {
             isError: formValue.errorList.length > 0
         };
@@ -20,7 +22,7 @@ class Field extends React.Component {
 
         return (
             <div className={classes}>
-                <input className="mdl-textfield__input" type="text" id={this.props.select} value={this.props.formValue.value} onChange={this.onChange.bind(this)} placeholder="HH:mm"/>
+                <input className="mdl-textfield__input" type="time" id={this.props.select} value={this.props.formValue.value} onChange={this.onChange} placeholder="HH:mm"/>
                 <label className="mdl-textfield__label">{this.props.label}</label>
                 <ErrorList className="mdl-textfield__error" formValue={this.state.value} />
             </div>

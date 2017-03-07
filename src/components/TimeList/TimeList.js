@@ -21,10 +21,9 @@ class TimeList extends React.Component {
         if (!this.props.times || !this.props.times.length) {
             return <div></div>
         }
-        const times = this.sort();
 
         let durationSum = Moment.duration('00:00');
-        times.map(t => durationSum.add(t.duration));
+        this.props.times.map(t => durationSum.add(t.duration));
 
         return (
             <div>
@@ -37,14 +36,14 @@ class TimeList extends React.Component {
                         <th className="mdl-cell--hide-phone">Break</th>
                         <th>Duration</th>
                         <th>
-                            <Button invoke={this.props.download} context={times} icon="cloud_download" />
-                            <Button invoke={this.props.clear} context={times}  icon="delete"/>
+                            <Button invoke={this.props.download} context={this.props.times} icon="cloud_download" />
+                            <Button invoke={this.props.clear} context={this.props.times}  icon="delete"/>
                         </th>
                     </tr>
                     </thead>
 
                     <tbody>
-                    {times.map((t, k) => { return <tr key={k}>
+                    {this.props.times.map((t, k) => { return <tr key={k}>
                         <td className="mdl-data-table__cell--non-numeric">{new Moment(t.day).format('LL')}</td>
                         <td className="mdl-cell--hide-phone">{t.start}</td>
                         <td className="mdl-cell--hide-phone">{t.end}</td>
@@ -57,22 +56,6 @@ class TimeList extends React.Component {
                 </table>
             </div>
         );
-    }
-
-    sort() {
-        return this.props.times.sort((a,b) => {
-            a = Moment(a.day, Moment.ISO_8601);
-            b = Moment(b.day, Moment.ISO_8601);
-
-            if (a.isBefore(b)) {
-                return -1;
-            }
-
-            if (a.isAfter(b)) {
-                return 1;
-            }
-            return 0;
-        });
     }
 }
 

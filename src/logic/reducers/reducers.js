@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 
 import {CALCULATE, ADD_TIME, LOAD_TIMES, CLEAR_TIMES, DELETE_TIME, DOWNLOAD_TIMES} from '../actions/actions';
 import store from 'store/dist/store.modern';
+import Moment from 'moment';
 
 function calculate(state = { current: {}}, action) {
     switch (action.type) {
@@ -14,6 +15,7 @@ function calculate(state = { current: {}}, action) {
     }
 }
 
+//TODO split into services
 function timelist(state = {times: []}, action) {
     let times = state.times || [];
 
@@ -30,6 +32,21 @@ function timelist(state = {times: []}, action) {
         }
         case ADD_TIME :
             times = [...times, action.time];
+
+            times =  times.sort((a,b) => {
+                a = Moment(a.day, Moment.ISO_8601);
+                b = Moment(b.day, Moment.ISO_8601);
+
+                if (a.isBefore(b)) {
+                    return -1;
+                }
+
+                if (a.isAfter(b)) {
+                    return 1;
+                }
+                return 0;
+            });
+
             store.set('times', times)
             return Object.assign({}, state, {
                 times : times

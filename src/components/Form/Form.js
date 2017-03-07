@@ -6,6 +6,7 @@ import { connect } from 'react-redux'
 import {fetchCalculation, save} from '../../logic/actions/actions';
 import Button from './../Button/Button';
 import Moment from 'moment';
+import autoBind from 'react-autobind';
 
 import './Form.css';
 
@@ -27,9 +28,11 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
 
+        autoBind(this);
+
         let formValue = createValue({
             value: props.value,
-            onChange: this.onChange.bind(this),
+            onChange: this.onChange,
             schema: SCHEMA
         });
 
@@ -46,7 +49,7 @@ class Form extends React.Component {
     onReset() {
         let formValue = createValue({
             value: {},
-            onChange: this.onChange.bind(this),
+            onChange: this.onChange,
             schema: SCHEMA
         });
 

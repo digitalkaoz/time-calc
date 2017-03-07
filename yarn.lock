@@ -4980,6 +4980,10 @@ rc@^1.0.1, rc@^1.1.6, rc@~1.1.6:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-autobind@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-autobind/-/react-autobind-1.0.6.tgz#936bb58edf6b89b619c50f82f0e617159fdfd4f1"
+
 react-derivable@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/react-derivable/-/react-derivable-0.2.0.tgz#0d092532dd8c5a46a2ca87a335b3614be3063e57"
