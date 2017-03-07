@@ -10,7 +10,7 @@ import autoBind from 'react-autobind';
 
 import './Form.css';
 
-const SCHEMA = {
+export const SCHEMA = {
     type: 'object',
     required: [
         'start',
@@ -42,24 +42,19 @@ class Form extends React.Component {
     onChange(formValue) {
         if (formValue._errorList.length === 0) {
             this.props.calculate(formValue);
+        } else {
+            this.setState({formValue})
         }
-        this.setState({formValue})
     }
 
     componentWillReceiveProps(props) {
-        if (props.value !== this.props.value) {
-            let formValue = createValue({
-                value: props.value,
-                onChange: this.onChange,
-                schema: SCHEMA
-            });
+        let formValue = createValue({
+            value: props.value,
+            onChange: this.onChange,
+            schema: SCHEMA
+        });
 
-            this.state = {formValue}
-        }
-    }
-
-    onReset() {
-        this.props.reset();
+        this.state = {formValue}
     }
 
     render() {
@@ -98,9 +93,6 @@ const mapDispatchToProps = (dispatch) => {
         calculate: (formValue) => {
             return dispatch(fetchCalculation(formValue))
         },
-        reset: () => {
-            return dispatch(resetCalculation())
-        },
         save: (component) => {
             if (component.props.value) {
                 let time = component.props.value;
@@ -110,8 +102,8 @@ const mapDispatchToProps = (dispatch) => {
                     time.break = '0:00';
                 }
 
+                dispatch(resetCalculation());
                 dispatch(save(time));
-                component.onReset();
             }
         }
     }

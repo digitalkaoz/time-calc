@@ -13,10 +13,10 @@ function calculate(state = { current: {}}, action) {
         case RESET_CALCULATION:
             return Object.assign({}, state, {
                 current: {
-                    start: undefined,
-                    end: undefined,
-                    duration: undefined,
-                    break: undefined
+                    start: '',
+                    end: '',
+                    duration: '',
+                    break: ''
                 }
             });
         default:

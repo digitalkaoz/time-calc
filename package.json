@@ -3,23 +3,27 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-cli": "^6.23.0",
     "babel-plugin-transform-class-properties": "^6.22.0",
+    "babel-plugin-transform-require-ignore": "^0.0.2",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-es2017": "^6.22.0",
+    "babel-preset-react-app": "^2.1.1",
     "babel-preset-stage-0": "^6.22.0",
     "concurrently": "^3.2.0",
+    "critical": "^0.8.4",
     "eslint": "^3.17.1",
     "eslint-plugin-react": "^6.10.0",
+    "inline-critical": "^2.4.0",
+    "jsdom": "^9.11.0",
     "node-sass": "^4.5.0",
     "react-scripts": "^0.9",
     "standard": "^9.0.0",
     "sw-precache": "^5.0.0"
   },
   "dependencies": {
-    "csvwriter": "^1.3.0",
     "isomorphic-fetch": "^2.2.1",
-    "material-design-lite": "^1.3.0",
+    "material-design-lite": "digitalkaoz/material-design-lite#feature\/ssr-capability",
     "moment": "^2.17.1",
     "moment-duration-format": "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz",
     "react": "^15.4.2",
@@ -38,10 +42,13 @@
     "dev": "concurrently \"cd server && npm run dev\" \"npm run client:start\" \"npm run watch-css\"",
     "start": "npm run client:build && npm start --prefix server",
     "client:start": "react-scripts start",
-    "client:build": "mv .env ._env && concurrently \"react-scripts build\" \"npm run build-css\" && sw-precache --config=sw-precache-config.js && mv ._env .env",
+    "client:build": "rm -rf build/* && mv .env ._env && npm run build-css && react-scripts build && npm run server:build && mv ._env .env",
     "client:test": "react-scripts test --env=jsdom",
     "client:eject": "react-scripts eject",
+    "server:build" : "npm run ssr && npm run sw",
     "deploy": "cd server && npm run deploy",
-    "cs": "standard --fix src/**/*.jsx server/src/**/*.js -v --parser babel-eslint"
+    "sw": "sw-precache --config=scripts/sw-precache-config.js",
+    "cs": "standard --fix src/**/*.jsx server/src/**/*.js -v --parser babel-eslint",
+    "ssr": "BABEL_ENV=production node_modules/.bin/babel-node scripts/ssr.js"
   }
 }

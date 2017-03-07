@@ -1,7 +1,6 @@
 import fetch from 'isomorphic-fetch'
 import Moment from 'moment';
-// eslint-disable-next-line
-import durationFormat from 'moment-duration-format';
+import 'moment-duration-format';
 
 export const CALCULATE = 'CALCULATE';
 export const ADD_TIME = 'ADD_TIME';
@@ -12,13 +11,18 @@ export const DOWNLOAD_TIMES = 'DOWNLOAD_TIMES';
 export const RESET_CALCULATION = 'RESET_CALCULATION';
 
 function fetchCalculationFromServer(form, dispatch) {
-    const query = Object.keys(form.value).map(k => {
-        if (form.value[k] && k !== 'duration') {
-            return `${encodeURIComponent(k)}=${encodeURIComponent(form.value[k])}`
-        }
+    let timeSet = {};
 
-        return '';
+    Object.keys(form.value).map((k) => {
+        if (Object.keys(form.schema.properties).indexOf(k) !== -1 && form.value[k] !== '') {
+            timeSet[k] = form.value[k];
+        }
+    });
+
+    const query = Object.keys(timeSet).map(k => {
+        return `${encodeURIComponent(k)}=${encodeURIComponent(timeSet[k])}`
     }).join('&');
+
     fetch((process.env.REACT_APP_SERVER || '/') + 'calculate?' + query)
         .then(response => response.json())
         .then((json) => {
@@ -27,7 +31,9 @@ function fetchCalculationFromServer(form, dispatch) {
                 form: form,
                 response: json
             });
-        })
+        }).catch(e => {
+            return calculateLocally(form, dispatch)
+    })
 }
 
 function calculateLocally(form, dispatch) {
@@ -68,9 +74,7 @@ export function resetCalculation() {
 }
 
 export function save(time) {
-    return (dispatch, state) => {
-        //write to localstorage
-        //const times = state().timelist.times.push(time);
+    return (dispatch) => {
         dispatch({
             type: ADD_TIME,
             time: time

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import './Button.css';
 import autoBind from 'react-autobind';
+import 'material-design-lite/src/button/button'
 
 class Button extends React.Component {
     constructor(props){
@@ -15,7 +16,7 @@ class Button extends React.Component {
     }
 
     render() {
-        const classes = 'mdl-button mdl-js-button '+(this.props.classes || '');
+        const classes = 'mdl-button mdl-js-button mdl-js-ripple-effect '+(this.props.classes || '');
 
         return (
             <button className={classes} onClick={this.onClick }>

@@ -4,7 +4,7 @@ import createLogger from 'redux-logger'
 import rootReducer from './reducers/reducers'
 
 const loggerMiddleware = createLogger()
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
 
 export default function configureStore(preloadedState) {
     return createStore(

@@ -25,7 +25,7 @@ app
       flush: require('zlib').Z_SYNC_FLUSH
     }))
     .use(serve(ASSET_DIR, {
-      maxage: 31536000 // 1yr
+      maxage: 3.154e+10 // 1yr
     }))
     .use(cors())
     .use(Logger())

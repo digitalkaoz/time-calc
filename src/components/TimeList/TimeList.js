@@ -2,11 +2,8 @@ import React from "react";
 import { connect } from 'react-redux'
 import Button from './../Button/Button';
 import Moment from 'moment';
-// eslint-disable-next-line
-import durationFormat from 'moment-duration-format';
-// eslint-disable-next-line
+import 'moment-duration-format';
 //import 'material-design-lite/src/data-table/data-table';
-
 
 import './TimeList.css';
 import {loadTimes, clearTimes, deleteTime, downloadTimes} from '../../logic/actions/actions';
@@ -51,7 +48,7 @@ class TimeList extends React.Component {
                         <td>{t.duration}</td>
                         <td><Button invoke={this.props.delete} context={t} icon="delete" /></td>
                     </tr>})}
-                    <tr><td colSpan="4"></td><td><b>{durationSum.format('HH:mm')}</b></td><td /></tr>
+                    <tr><td colSpan="4"/><td><b>{durationSum.format('HH:mm')}</b></td><td /></tr>
                     </tbody>
                 </table>
             </div>

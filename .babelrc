@@ -3,11 +3,18 @@
   "ignore": [],
   "plugins": [
     "transform-class-properties",
-    "transform-runtime"
+    "transform-runtime",
+    [
+      "babel-plugin-transform-require-ignore",
+      {
+        "extensions": [".less", ".sass", ".css"]
+      }
+    ]
   ],
   "presets": [
     "es2017",
     "stage-0",
-    "env"
+    "env",
+    "react-app"
   ]
 }

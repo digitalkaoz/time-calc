@@ -37,3 +37,4 @@ $ yarn start    # production build running through koa2
 
 * datepicker for day to track
 * fix form reset (reload all the things)
+* Revert to mdl upstream once https://github.com/google/material-design-lite/pull/5054 is merged

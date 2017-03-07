@@ -30,6 +30,9 @@
     "start": "node build/index.js",
     "dev": "babel-watch ./src/index.js",
     "build": "babel src -d build",
-    "deploy": "rm -rf build && npm run --prefix ../ client:build && cp -r ../build . && npm run build && docker build -t \"time-calc.digitalkaoz.net\" . && docker tag \"time-calc.digitalkaoz.net\" digitalkaoz/time-calc.digitalkaoz.net:$(git rev-parse --verify HEAD) && docker tag \"time-calc.digitalkaoz.net\" digitalkaoz/time-calc.digitalkaoz.net:latest && docker push digitalkaoz/time-calc.digitalkaoz.net:$(git rev-parse --verify HEAD) && docker push digitalkaoz/time-calc.digitalkaoz.net:latest"
+    "docker:build" : "rm -rf build && npm run --prefix ../ client:build && cp -r ../build . && npm run build && docker build -t \"time-calc.digitalkaoz.net\" .",
+    "docker:tag" : "docker tag \"time-calc.digitalkaoz.net\" digitalkaoz/time-calc.digitalkaoz.net:$(git rev-parse --verify HEAD) && docker tag \"time-calc.digitalkaoz.net\" digitalkaoz/time-calc.digitalkaoz.net:latest",
+    "docker:push" : "docker push digitalkaoz/time-calc.digitalkaoz.net:$(git rev-parse --verify HEAD) && docker push digitalkaoz/time-calc.digitalkaoz.net:latest",
+    "deploy": "npm run docker:build && npm run docker:tag && npm run docker:push"
   }
 }
