@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import {CALCULATE, ADD_TIME, LOAD_TIMES, CLEAR_TIMES, DELETE_TIME, DOWNLOAD_TIMES} from '../actions/actions';
+import {CALCULATE, ADD_TIME, LOAD_TIMES, CLEAR_TIMES, DELETE_TIME, DOWNLOAD_TIMES, RESET_CALCULATION} from '../actions/actions';
 import store from 'store/dist/store.modern';
 import Moment from 'moment';
 
@@ -9,6 +9,15 @@ function calculate(state = { current: {}}, action) {
         case CALCULATE:
             return Object.assign({}, state, {
                 current: action.response
+            });
+        case RESET_CALCULATION:
+            return Object.assign({}, state, {
+                current: {
+                    start: undefined,
+                    end: undefined,
+                    duration: undefined,
+                    break: undefined
+                }
             });
         default:
             return state

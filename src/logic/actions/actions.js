@@ -9,10 +9,11 @@ export const LOAD_TIMES = 'LOAD_TIMES';
 export const CLEAR_TIMES = 'CLEAR_TIMES';
 export const DELETE_TIME = 'DELETE_TIME';
 export const DOWNLOAD_TIMES = 'DOWNLOAD_TIMES';
+export const RESET_CALCULATION = 'RESET_CALCULATION';
 
 function fetchCalculationFromServer(form, dispatch) {
     const query = Object.keys(form.value).map(k => {
-        if (form.value[k]) {
+        if (form.value[k] && k !== 'duration') {
             return `${encodeURIComponent(k)}=${encodeURIComponent(form.value[k])}`
         }
 
@@ -55,6 +56,14 @@ export function fetchCalculation(form) {
         } else {
             calculateLocally(form, dispatch);
         }
+    }
+}
+
+export function resetCalculation() {
+    return (dispatch) => {
+        dispatch({
+            type: RESET_CALCULATION,
+        })
     }
 }
 
