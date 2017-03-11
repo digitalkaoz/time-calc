@@ -12,7 +12,6 @@
     ]
   ],
   "presets": [
-    "es2017",
     "stage-0",
     "env",
     "react-app"

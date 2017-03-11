@@ -5,7 +5,7 @@
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-plugin-transform-class-properties": "^6.22.0",
-    "babel-plugin-transform-require-ignore": "^0.0.2",
+    "babel-plugin-transform-require-ignore": "^0.1.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-react-app": "^2.1.1",
@@ -22,10 +22,11 @@
     "sw-precache": "^5.0.0"
   },
   "dependencies": {
-    "draggabilly": "^2.1.1",
+    "draggabilly": "digitalkaoz/draggabilly#patch-1",
+    "get-size": "digitalkaoz/get-size#patch-1",
     "isomorphic-fetch": "^2.2.1",
     "material-design-lite": "digitalkaoz/material-design-lite#feature/ssr-capability",
-    "md-date-time-picker": "puranjayjain/md-date-time-picker#2.3.0",
+    "md-date-time-picker": "puranjayjain/md-date-time-picker#master",
     "moment": "^2.17.1",
     "moment-duration-format": "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz",
     "react": "^15.4.2",
@@ -36,7 +37,9 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
     "redux-thunk": "^2.2.0",
-    "store": "^2.0.4"
+    "store": "^2.0.4",
+    "unidragger": "digitalkaoz/unidragger#patch-1",
+    "unipointer": "digitalkaoz/unipointer#patch-1"
   },
   "scripts": {
     "build-css": "node-sass src/ -o src/",

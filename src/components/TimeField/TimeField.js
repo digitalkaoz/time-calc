@@ -43,9 +43,7 @@ class TimeField extends React.Component {
   onToggle = () => this.state.dialog.toggle()
 
   onClose () {
-    this.state.dialog._selectDialog()
-
-    if (DatePicker.dialog.state) {
+    if (this.state.dialog.isOpen()) {
       this.state.dialog.hide(true)
     }
   }
@@ -55,7 +53,7 @@ class TimeField extends React.Component {
     this.props.formValue.update(this.state.dialog.time.format('HH:mm'))
   }
 
-  onChange = (e) => { this.props.formValue.update(e.target.value) }
+  onChange = (e) => this.props.formValue.update(e.target.value)
 }
 
 export default withFormValue(TimeField)
