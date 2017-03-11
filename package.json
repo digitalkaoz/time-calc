@@ -25,7 +25,7 @@
     "draggabilly": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
     "material-design-lite": "digitalkaoz/material-design-lite#feature/ssr-capability",
-    "md-date-time-picker": "^2.2.0",
+    "md-date-time-picker": "puranjayjain/md-date-time-picker#2.3.0",
     "moment": "^2.17.1",
     "moment-duration-format": "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz",
     "react": "^15.4.2",
@@ -50,7 +50,7 @@
     "server:build": "npm run ssr && npm run sw",
     "deploy": "cd server && npm run deploy",
     "sw": "sw-precache --config=scripts/sw-precache-config.js",
-    "cs": "standard --fix src/**/*.jsx server/src/**/*.js -v --parser babel-eslint",
+    "cs": "standard --fix src/**/**/*.js server/src/**/*.js -v --parser babel-eslint",
     "ssr": "BABEL_ENV=production node_modules/.bin/babel-node scripts/ssr.js"
   }
 }

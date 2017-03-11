@@ -1,5 +1,7 @@
 @import '../../../node_modules/material-design-lite/src/grid/grid';
 
-.rf-Form {
-  @extend .mdl-grid
+#form {
+  .mdl-cell:last-child {
+    text-align: center;
+  }
 }

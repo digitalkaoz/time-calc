@@ -4596,12 +4596,12 @@ math-expression-evaluator@^1.2.14:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
 
-md-date-time-picker@^2.2.0:
+md-date-time-picker@puranjayjain/md-date-time-picker#2.3.0:
   version "2.2.0"
-  resolved "https://registry.yarnpkg.com/md-date-time-picker/-/md-date-time-picker-2.2.0.tgz#68875fce79db6ed12235ebc467aa934845f4e1d6"
+  resolved "https://codeload.github.com/puranjayjain/md-date-time-picker/tar.gz/5dec104eeb2362e49a4e759e5bad4aea1a6c6aac"
   dependencies:
     draggabilly "^2.1.1"
-    moment "^2.13.0"
+    moment "^2.17.1"
 
 media-typer@0.3.0:
   version "0.3.0"
@@ -4726,7 +4726,7 @@ mkdirp@~0.3.5:
   version "2.0.0"
   resolved "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz#c3263cf6bafa787ac81e37ace41fc36d7e6411e9"
 
-moment@^2.13.0, moment@^2.17.1:
+moment@^2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
