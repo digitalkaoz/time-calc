@@ -41,14 +41,14 @@ class TimeList extends React.Component {
 
                     <tbody>
                     {this.props.times.map((t, k) => { return <tr key={k}>
-                        <td className="mdl-data-table__cell--non-numeric">{new Moment(t.day).format('LL')}</td>
+                        <td className="mdl-data-table__cell--non-numeric">{new Moment(t.date).format('LL')}</td>
                         <td className="mdl-cell--hide-phone">{t.start}</td>
                         <td className="mdl-cell--hide-phone">{t.end}</td>
                         <td className="mdl-cell--hide-phone">{t.break}</td>
                         <td>{t.duration}</td>
                         <td><Button invoke={this.props.delete} context={t} icon="delete" /></td>
                     </tr>})}
-                    <tr><td colSpan="4"/><td><b>{durationSum.format('HH:mm')}</b></td><td /></tr>
+                    <tr><td colSpan="4"/><td><b>{durationSum.format('HH:mm', { trim: false })}</b></td><td /></tr>
                     </tbody>
                 </table>
             </div>
@@ -64,20 +64,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        load: () => {
-            return dispatch(loadTimes())
-        },
-
-        clear: () => {
-            return dispatch(clearTimes())
-        },
-
-        delete: (time) => {
-            return dispatch(deleteTime(time));
-        },
-        download: (times) => {
-            return dispatch(downloadTimes(times));
-        }
+        load: () => dispatch(loadTimes()),
+        clear: () => dispatch(clearTimes()),
+        delete: (time) => dispatch(deleteTime(time)),
+        download: (times) => dispatch(downloadTimes(times))
     }
 }
 

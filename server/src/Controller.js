@@ -11,7 +11,8 @@ export default class Controller {
       start: ctx.query.start,
       end: ctx.query.end,
       break: ctx.query.break,
-      duration: this.calculator.calc(ctx.query['start'], ctx.query['end'], ctx.query['break'] || null)
+      duration: this.calculator.calc(ctx.query['start'], ctx.query['end'], ctx.query['break'] || null),
+      date: ctx.query['date']
     }
 
     next()

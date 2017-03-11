@@ -2229,6 +2229,13 @@ dotenv@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-2.0.0.tgz#bd759c357aaa70365e01c96b7b0bec08a6e0d949"
 
+draggabilly@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/draggabilly/-/draggabilly-2.1.1.tgz#3a31a1fa73e4cc71c75a4bfea9acfb2dade01722"
+  dependencies:
+    get-size "~2.0.2"
+    unidragger "~2.1.0"
+
 duplexer2@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
@@ -2669,6 +2676,10 @@ etag@~1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.0.tgz#6f631aef336d6c46362b51764044ce216be3c051"
 
+ev-emitter@~1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ev-emitter/-/ev-emitter-1.0.3.tgz#ee5ef74b6ed28d911b32ddcbfc97867f580937bc"
+
 event-emitter@~0.3.4:
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/event-emitter/-/event-emitter-0.3.4.tgz#8d63ddfb4cfe1fae3b32ca265c4c720222080bb5"
@@ -3097,6 +3108,10 @@ get-port@^2.1.0:
   resolved "https://registry.yarnpkg.com/get-port/-/get-port-2.1.0.tgz#8783f9dcebd1eea495a334e1a6a251e78887ab1a"
   dependencies:
     pinkie-promise "^2.0.0"
+
+get-size@~2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/get-size/-/get-size-2.0.2.tgz#555ea98ab8732e0c021e9e23e2219adcbe398e98"
 
 get-stdin@5.0.1, get-stdin@^5.0.1:
   version "5.0.1"
@@ -4581,6 +4596,13 @@ math-expression-evaluator@^1.2.14:
   version "1.2.16"
   resolved "https://registry.yarnpkg.com/math-expression-evaluator/-/math-expression-evaluator-1.2.16.tgz#b357fa1ca9faefb8e48d10c14ef2bcb2d9f0a7c9"
 
+md-date-time-picker@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/md-date-time-picker/-/md-date-time-picker-2.2.0.tgz#68875fce79db6ed12235ebc467aa934845f4e1d6"
+  dependencies:
+    draggabilly "^2.1.1"
+    moment "^2.13.0"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -4704,7 +4726,7 @@ mkdirp@~0.3.5:
   version "2.0.0"
   resolved "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz#c3263cf6bafa787ac81e37ace41fc36d7e6411e9"
 
-moment@^2.17.1:
+moment@^2.13.0, moment@^2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -6823,6 +6845,18 @@ uglify-to-browserify@~1.0.0:
 uid-number@~0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/uid-number/-/uid-number-0.0.6.tgz#0ea10e8035e8eb5b8e4449f06da1c730663baa81"
+
+unidragger@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unidragger/-/unidragger-2.1.0.tgz#e4c23f5fab8188c637e776d0b3810c7d989e5561"
+  dependencies:
+    unipointer "~2.1.0"
+
+unipointer@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/unipointer/-/unipointer-2.1.0.tgz#b1e9fa2986c1306d97330587ba434d285ccfe37f"
+  dependencies:
+    ev-emitter "~1.0.1"
 
 uniq@^1.0.1:
   version "1.0.1"

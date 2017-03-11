@@ -16,7 +16,8 @@ function calculate(state = { current: {}}, action) {
                     start: '',
                     end: '',
                     duration: '',
-                    break: ''
+                    break: '',
+                    day: ''
                 }
             });
         default:
@@ -43,8 +44,8 @@ function timelist(state = {times: []}, action) {
             times = [...times, action.time];
 
             times =  times.sort((a,b) => {
-                a = Moment(a.day, Moment.ISO_8601);
-                b = Moment(b.day, Moment.ISO_8601);
+                a = Moment(a.date, 'L');
+                b = Moment(b.date, 'L');
 
                 if (a.isBefore(b)) {
                     return -1;

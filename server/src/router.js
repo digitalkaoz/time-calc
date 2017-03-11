@@ -15,7 +15,8 @@ router.get('calculate', '/calculate', validator({
   query: object().keys({
     start: string().required().regex(timePattern),
     end: string().required().regex(timePattern),
-    break: string().optional().regex(timePattern)
+    break: string().optional().regex(timePattern),
+    date: string().optional().regex(/^.*/)
   })
 }), controller.calculate.bind(controller))
 

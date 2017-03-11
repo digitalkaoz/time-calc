@@ -2,6 +2,7 @@ import React from 'react'
 import {Fieldset, createValue} from 'react-forms'
 import TimeField from '../TimeField/TimeField';
 import DisplayField from '../DisplayField/DisplayField';
+import DatepickerField from '../DatepickerField/DatepickerField';
 import { connect } from 'react-redux'
 import {fetchCalculation, save, resetCalculation} from '../../logic/actions/actions';
 import Button from './../Button/Button';
@@ -19,7 +20,8 @@ export const SCHEMA = {
     properties: {
         start: {type: 'string', pattern: /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/},
         end: {type: 'string', pattern: /^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/},
-        break: {type: "string", pattern: /^$|(^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])$/}
+        break: {type: "string", pattern: /^$|(^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9])$/},
+        date: {type: "string", pattern: /^.*$/}
     }
 };
 
@@ -31,7 +33,9 @@ class Form extends React.Component {
         autoBind(this);
 
         let formValue = createValue({
-            value: props.value,
+            value: {
+                date: Moment().format('L')
+            },
             onChange: this.onChange,
             schema: SCHEMA
         });
@@ -60,19 +64,22 @@ class Form extends React.Component {
     render() {
         return (
             <Fieldset formValue={this.state.formValue} className="mdl-grid">
-                <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                <div className="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
                     <TimeField select="start" label="Start Time"  />
                 </div>
-                <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                <div className="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
                     <TimeField select="break" label="Break" />
                 </div>
-                <div className="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                <div className="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
                     <TimeField select="end" label="End Time"  />
+                </div>
+                <div className="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
+                    <DatepickerField select="date" label="Day" />
                 </div>
                 <div className="mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone">
                     <DisplayField label="Duration" value={this.props.value.duration || ''} />
                 </div>
-                <div className="mdl-cell mdl-cell--1-col mdl-cell mdl-cell--5-col-tablet mdl-cell mdl-cell--6-col-phone">
+                <div className="mdl-cell mdl-cell--2-col mdl-cell mdl-cell--4-col-tablet mdl-cell mdl-cell--6-col-phone">
                     {this.props.value.duration &&
                     <Button invoke={this.props.save} context={this} icon="add" classes="mdl-button--raised mdl-js-ripple-effect mdl-button--accent"/>
                     }
@@ -90,13 +97,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        calculate: (formValue) => {
-            return dispatch(fetchCalculation(formValue))
-        },
+        calculate: (formValue) => dispatch(fetchCalculation(formValue)),
+
         save: (component) => {
             if (component.props.value) {
                 let time = component.props.value;
-                time.day = Moment().format();
 
                 if (!time.break) {
                     time.break = '0:00';

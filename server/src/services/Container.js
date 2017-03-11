@@ -14,7 +14,7 @@ b.service('calculator', () => {
 })
 
 b.service('controller', () => {
-  return new Controller(b.container.calculator, b.container.formatter)
+  return new Controller(b.container.calculator)
 })
 
 export default b

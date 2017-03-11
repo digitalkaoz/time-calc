@@ -22,8 +22,10 @@
     "sw-precache": "^5.0.0"
   },
   "dependencies": {
+    "draggabilly": "^2.1.1",
     "isomorphic-fetch": "^2.2.1",
-    "material-design-lite": "digitalkaoz/material-design-lite#feature\/ssr-capability",
+    "material-design-lite": "digitalkaoz/material-design-lite#feature/ssr-capability",
+    "md-date-time-picker": "^2.2.0",
     "moment": "^2.17.1",
     "moment-duration-format": "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz",
     "react": "^15.4.2",
@@ -45,7 +47,7 @@
     "client:build": "rm -rf build/* && mv .env ._env && npm run build-css && react-scripts build && npm run server:build && mv ._env .env",
     "client:test": "react-scripts test --env=jsdom",
     "client:eject": "react-scripts eject",
-    "server:build" : "npm run ssr && npm run sw",
+    "server:build": "npm run ssr && npm run sw",
     "deploy": "cd server && npm run deploy",
     "sw": "sw-precache --config=scripts/sw-precache-config.js",
     "cs": "standard --fix src/**/*.jsx server/src/**/*.js -v --parser babel-eslint",
