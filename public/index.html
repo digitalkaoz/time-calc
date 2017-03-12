@@ -14,7 +14,28 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function () {
-                navigator.serviceWorker.register('/service-worker.js');
+                navigator.serviceWorker.register('/service-worker.js')
+                .then(function(registration){
+                    console.info('service worker registration successful');
+//                    function showNotification() {
+//                        Notification.requestPermission(function(result) {
+//                            if (result === 'granted') {
+//                                navigator.serviceWorker.ready.then(function(registration) {
+//                                    registration.showNotification('Vibration Sample', {
+//                                        body: 'Buzz! Buzz!',
+//                                        icon: '/favicon.ico',
+//                                        vibrate: [200, 100, 200, 100, 200, 100, 200],
+//                                        tag: 'vibration-sample'
+//                                    });
+//                                });
+//                            }
+//                        });
+//                    }
+//
+//                    showNotification();
+                }).catch(function(error) {
+                    console.warn('service worker registration failed: '+error.toString())
+                });
             });
         }
     </script>

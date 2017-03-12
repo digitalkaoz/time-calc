@@ -6,20 +6,24 @@ import 'moment-duration-format'
 // import 'material-design-lite/src/data-table/data-table';
 
 import './TimeList.css'
-import {loadTimes, clearTimes, deleteTime, downloadTimes} from '../../logic/actions/actions'
+import Timeset from '../Timeset/Timeset';
+import {loadTimes, clearTimes, downloadTimes} from '../../logic/actions/actions'
 
 class TimeList extends React.Component {
+
   componentDidMount () {
     this.props.load()
   }
 
   render () {
-    if (!this.props.times || !this.props.times.length) {
-      return <div />
+    //if (!this.props.times || !this.props.times.length) {
+     if (!this.props.times || !Object.keys(this.props.times).length) {
+       return <div />
     }
 
     let durationSum = Moment.duration('00:00')
-    this.props.times.map(t => durationSum.add(t.duration))
+    Object.keys(this.props.times).map(t => durationSum.add(this.props.times[t].duration))
+    //this.props.times.map(t => durationSum.add(t.duration))
 
     return (
       <div>
@@ -39,16 +43,8 @@ class TimeList extends React.Component {
           </thead>
 
           <tbody>
-            {this.props.times.map((t, k) => {
-              return <tr key={k}>
-                <td className='mdl-data-table__cell--non-numeric'>{new Moment(t.date).format('LL')}</td>
-                <td className='mdl-cell--hide-phone'>{t.start}</td>
-                <td className='mdl-cell--hide-phone'>{t.end}</td>
-                <td className='mdl-cell--hide-phone'>{t.break}</td>
-                <td>{t.duration}</td>
-                <td><Button invoke={this.props.delete} context={t} icon='delete' /></td>
-              </tr>
-            })}
+            {/*{ this.props.times.map((t,k) => <Timeset key={k} time={t} index={k} />) }*/}
+            { Object.keys(this.props.times).map((k) => <Timeset key={k} time={this.props.times[k]} index={k} />) }
             <tr><td colSpan='4' /><td><b>{durationSum.format('HH:mm', { trim: false })}</b></td><td /></tr>
           </tbody>
         </table>
@@ -58,8 +54,14 @@ class TimeList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  //we have todo some ugly array->object conversion as the shallow compare of "connect" doesnt recognize the changes in the array value objects
+  let objectMap = {};
+
+  state.timelist.times.forEach((v, k) => objectMap[k] = v);
+
   return {
-    times: state.timelist.times
+    times: objectMap
+    //times: state.timelist.times
   }
 }
 
@@ -67,7 +69,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     load: () => dispatch(loadTimes()),
     clear: () => dispatch(clearTimes()),
-    delete: (time) => dispatch(deleteTime(time)),
     download: (times) => dispatch(downloadTimes(times))
   }
 }

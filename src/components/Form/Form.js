@@ -2,7 +2,7 @@ import React from 'react'
 import {Fieldset, createValue} from 'react-forms'
 import TimeField from '../TimeField/TimeField'
 import DisplayField from '../DisplayField/DisplayField'
-import DatepickerField from '../DatepickerField/DatepickerField'
+import DatepickerField from '../DateField/DateField'
 import { connect } from 'react-redux'
 import {fetchCalculation, save, resetCalculation} from '../../logic/actions/actions'
 import Button from './../Button/Button'
@@ -50,14 +50,14 @@ class Form extends React.Component {
     }
   }
 
-  componentWillReceiveProps (props) {
-    let formValue = createValue({
-      value: props.value,
-      onChange: this.onChange,
-      schema: SCHEMA
-    })
+  componentWillReceiveProps(props) {
+      let formValue = createValue({
+          value: props.value,
+          onChange: this.onChange,
+          schema: SCHEMA
+      })
 
-    this.state = {formValue}
+      this.state = {formValue}
   }
 
   render () {
@@ -76,12 +76,12 @@ class Form extends React.Component {
           <DatepickerField select='date' label='Day' />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone'>
-          <DisplayField label='Duration' value={this.props.value.duration || ''} />
+          <DisplayField label='Duration' value={(this.props.value && this.props.value.duration) || ''} />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell mdl-cell--4-col-tablet mdl-cell mdl-cell--6-col-phone'>
-          {this.props.value.duration &&
-            <Button invoke={this.props.save} context={this} icon='add' classes='mdl-button--raised mdl-js-ripple-effect mdl-button--accent' />
-                    }
+          {(this.props.value && this.props.value.duration) &&
+            <Button invoke={this.props.save} context={this} icon={ this.props.edit !== undefined ? 'save' : 'add' } classes='mdl-button--raised mdl-js-ripple-effect mdl-button--accent' />
+          }
         </div>
       </Fieldset>
     )
@@ -90,7 +90,8 @@ class Form extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    value: state.calculate.current
+    value: state.calculate.current,
+    edit: state.calculate.edit
   }
 }
 
@@ -103,11 +104,11 @@ const mapDispatchToProps = (dispatch) => {
         let time = component.props.value
 
         if (!time.break) {
-          time.break = '0:00'
+          time.break = '00:00'
         }
 
+        dispatch(save(time, component.props.edit))
         dispatch(resetCalculation())
-        dispatch(save(time))
       }
     }
   }
