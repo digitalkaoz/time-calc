@@ -33,7 +33,8 @@ class TimeField extends React.Component {
 
     return (
       <div className={classes}>
-        <input className='mdl-textfield__input' type='time' onKeyUp={this.onClose} id={this.props.select} ref='time' value={this.props.formValue.value} onBlur={this.onClose} onFocus={this.onToggle} onChange={this.onChange} placeholder='HH:mm' />
+        {/*<input className='mdl-textfield__input' type='time' onKeyUp={this.onClose} id={this.props.select} ref='time' value={this.props.formValue.value} onBlur={this.onClose} onFocus={this.onToggle} onChange={this.onChange} placeholder='HH:mm' />*/}
+        <input className='mdl-textfield__input' type='time' id={this.props.select} ref='time' value={this.props.formValue.value} onChange={this.onChange} placeholder='HH:mm' />
         <label className='mdl-textfield__label'>{this.props.label}</label>
         <ErrorList className='mdl-textfield__error' formValue={this.state.value} />
       </div>
