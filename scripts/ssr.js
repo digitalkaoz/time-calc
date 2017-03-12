@@ -36,6 +36,8 @@ let injectCriticalCss = function () {
         timeout: 30000,
         ignore: ['.mdl-layout__header'],
     }).then(criticalCss => {
+        criticalCss = criticalCss.replace(/http:\/\//g, '//');
+
         const html = fs.readFileSync(BUILD_DIR+'index.html', 'utf8');
         const inlined = inline(html, criticalCss, {
             basePath: BUILD_DIR,
