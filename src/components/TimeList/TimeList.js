@@ -6,24 +6,23 @@ import 'moment-duration-format'
 // import 'material-design-lite/src/data-table/data-table';
 
 import './TimeList.css'
-import Timeset from '../Timeset/Timeset';
+import Timeset from '../Timeset/Timeset'
 import {loadTimes, clearTimes, downloadTimes} from '../../logic/actions/actions'
 
 class TimeList extends React.Component {
-
   componentDidMount () {
     this.props.load()
   }
 
   render () {
-    //if (!this.props.times || !this.props.times.length) {
-     if (!this.props.times || !Object.keys(this.props.times).length) {
-       return <div />
+    // if (!this.props.times || !this.props.times.length) {
+    if (!this.props.times || !Object.keys(this.props.times).length) {
+      return <div />
     }
 
     let durationSum = Moment.duration('00:00')
     Object.keys(this.props.times).map(t => durationSum.add(this.props.times[t].duration))
-    //this.props.times.map(t => durationSum.add(t.duration))
+    // this.props.times.map(t => durationSum.add(t.duration))
 
     return (
       <div>
@@ -43,7 +42,7 @@ class TimeList extends React.Component {
           </thead>
 
           <tbody>
-            {/*{ this.props.times.map((t,k) => <Timeset key={k} time={t} index={k} />) }*/}
+            {/* { this.props.times.map((t,k) => <Timeset key={k} time={t} index={k} />) } */}
             { Object.keys(this.props.times).map((k) => <Timeset key={k} time={this.props.times[k]} index={k} />) }
             <tr><td colSpan='4' /><td><b>{durationSum.format('HH:mm', { trim: false })}</b></td><td /></tr>
           </tbody>
@@ -54,14 +53,16 @@ class TimeList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  //we have todo some ugly array->object conversion as the shallow compare of "connect" doesnt recognize the changes in the array value objects
-  let objectMap = {};
+  // we have todo some ugly array->object conversion as the shallow compare of "connect" doesnt recognize the changes in the array value objects
+  let objectMap = {}
 
-  state.timelist.times.forEach((v, k) => objectMap[k] = v);
+  state.timelist.times.forEach((v, k) => {
+    objectMap[k] = v
+  })
 
   return {
     times: objectMap
-    //times: state.timelist.times
+    // times: state.timelist.times
   }
 }
 

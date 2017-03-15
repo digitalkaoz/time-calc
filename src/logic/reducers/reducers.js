@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
-import Timelist from './timelist';
-import Form from './calculate';
+import Timelist from './timelist'
+import Form from './calculate'
 
 export default combineReducers({
   timelist: Timelist.dispatch,

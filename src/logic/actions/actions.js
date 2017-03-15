@@ -5,25 +5,26 @@ export const CLEAR_TIMES = 'CLEAR_TIMES'
 export const DELETE_TIME = 'DELETE_TIME'
 export const DOWNLOAD_TIMES = 'DOWNLOAD_TIMES'
 export const RESET_CALCULATION = 'RESET_CALCULATION'
-export const EDIT_TIME = 'EDIT_TIME';
+export const EDIT_TIME = 'EDIT_TIME'
 
-import Form from '../reducers/calculate';
+import Form from '../reducers/calculate'
 
 export function fetchCalculation (form) {
+    // TODO async resolve should move to middleware
   return (dispatch) => {
-      if (navigator.onLine) {
-          Form.calculateRemote(form).then(result => {
-              dispatch({
-                  type: CALCULATE,
-                  form: result,
-              });
-          })
-      } else {
-          dispatch({
-              type: CALCULATE,
-              form: Form.calculateLocal(form),
-          });
-      }
+    if (navigator.onLine) {
+      Form.calculateRemote(form).then(result => {
+        dispatch({
+          type: CALCULATE,
+          form: result
+        })
+      })
+    } else {
+      dispatch({
+        type: CALCULATE,
+        form: Form.calculateLocal(form)
+      })
+    }
   }
 }
 
@@ -80,10 +81,10 @@ export function downloadTimes (times) {
 }
 
 export function editTime (time) {
-    return (dispatch) => {
-        dispatch({
-            type: EDIT_TIME,
-            time: time
-        })
-    }
+  return (dispatch) => {
+    dispatch({
+      type: EDIT_TIME,
+      time: time
+    })
+  }
 }

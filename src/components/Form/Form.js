@@ -50,14 +50,14 @@ class Form extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-      let formValue = createValue({
-          value: props.value,
-          onChange: this.onChange,
-          schema: SCHEMA
-      })
+  componentWillReceiveProps (props) {
+    let formValue = createValue({
+      value: props.value,
+      onChange: this.onChange,
+      schema: SCHEMA
+    })
 
-      this.state = {formValue}
+    this.state = {formValue}
   }
 
   render () {
@@ -80,7 +80,7 @@ class Form extends React.Component {
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell mdl-cell--4-col-tablet mdl-cell mdl-cell--6-col-phone'>
           {(this.props.value && this.props.value.duration) &&
-            <Button invoke={this.props.save} context={this} icon={ this.props.edit !== undefined ? 'save' : 'add' } classes='mdl-button--raised mdl-js-ripple-effect mdl-button--accent' />
+            <Button invoke={this.props.save} context={this} icon={this.props.edit !== undefined ? 'save' : 'add'} classes='mdl-button--raised mdl-js-ripple-effect mdl-button--accent' />
           }
         </div>
       </Fieldset>
