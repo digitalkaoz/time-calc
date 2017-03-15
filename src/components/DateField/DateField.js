@@ -38,6 +38,7 @@ class DatepickerField extends React.Component {
     }
 
     if (this.state.dialog) {
+      // eslint-disable-next-line
       this.state.dialog.time = this.props.formValue.value ? new Moment(this.props.formValue.value, 'L') : new Moment()
     }
 

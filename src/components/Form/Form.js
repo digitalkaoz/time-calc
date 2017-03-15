@@ -70,7 +70,7 @@ class Form extends React.Component {
           <TimeField select='end' label='End Time' />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone'>
-          <TimeField select='break' label='Break' />
+          <TimeField select='break' label='Break' timer={false} />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone'>
           <DatepickerField select='date' label='Day' />

@@ -4,12 +4,14 @@ import 'material-design-lite/src/textfield/textfield'
 import autoBind from 'react-autobind'
 import DatePicker from 'md-date-time-picker/dist/js/mdDateTimePicker'
 import Moment from 'moment'
+import Button from '../Button/Button'
 
 import './TimeField.css'
 
 class TimeField extends React.Component {
   static defaultProps = {
-    mobile: false
+    mobile: false,
+    timer: true
   };
 
   constructor (props) {
@@ -46,10 +48,11 @@ class TimeField extends React.Component {
     }
 
     if (this.state.dialog) {
+      // eslint-disable-next-line
       this.state.dialog.time = new Moment(this.props.formValue.value, 'HH:mm')
     }
 
-        // always dirty b.c. of mdl issues with time/date inputs
+    // always dirty b.c. of mdl issues with time/date inputs
     if (this.refs.field && this.refs.field.parentNode.MaterialTextfield) {
       this.refs.field.parentNode.classList.add('is-dirty')
     }
@@ -68,15 +71,20 @@ class TimeField extends React.Component {
                 }
         <label className='mdl-textfield__label'>{this.props.label}</label>
         <ErrorList className='mdl-textfield__error' formValue={this.props.formValue} />
+        {this.props.timer &&
+        <Button invoke={this.onUpdate} context={this} icon='timer' classes='mdl-button--icon mdl-button--colored pull-right' />}
       </div>
     )
   }
 
   onClose = () => this.state.dialog.hide()
   onToggle = () => {
+    // eslint-disable-next-line
     this.state.dialog.time = this.props.formValue.value ? new Moment(this.props.formValue.value, 'HH:mm') : new Moment()
     this.state.dialog.toggle()
   }
+
+  onUpdate = () => this.props.formValue.update(new Moment().format('HH:mm'))
   onOk = () => this.props.formValue.update(this.state.dialog.time.format('HH:mm'))
   onChange = (e) => this.props.formValue.update(e.target.value)
 }

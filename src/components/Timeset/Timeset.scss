@@ -1,0 +1,26 @@
+tbody {
+  tr {
+    button {
+      visibility: hidden;
+    }
+
+    &:hover {
+      button {
+        visibility: visible;
+      }
+    }
+
+    @media (max-width: 479px) {
+      button {
+        visibility: visible;
+      }
+    }
+
+    @media (max-width: 839px) and (min-width: 480px) {
+      button {
+        visibility: visible;
+      }
+    }
+  }
+
+}

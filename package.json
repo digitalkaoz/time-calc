@@ -22,6 +22,7 @@
     "sw-precache": "^5.0.0"
   },
   "dependencies": {
+    "dialog-polyfill": "^0.4.7",
     "draggabilly": "digitalkaoz/draggabilly#patch-1",
     "get-size": "digitalkaoz/get-size#patch-1",
     "isomorphic-fetch": "^2.2.1",
