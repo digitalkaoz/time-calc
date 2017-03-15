@@ -43,15 +43,20 @@ export default class Form {
     return {
       ...this.state.state,
       current: {
-                // start: '',
-                // end: '',
-                // duration: '',
-                // break: '',
-        day: new Moment()
+        date: new Moment().format('L')
       }
     }
   }
 
+  static fetchCalculation (form) {
+    if (navigator.onLine) {
+      return Form.calculateRemote(form)
+    }
+
+    return new Promise((resolve) => {
+      resolve(Form.calculateLocal(form))
+    })
+  }
   static calculateRemote (form) {
     let timeSet = {}
 
@@ -65,7 +70,6 @@ export default class Form {
 
     return fetch((process.env.REACT_APP_SERVER || '/') + 'calculate?' + query)
             .then(response => response.json())
-            .catch(Form.calculateLocal(form))
   }
 
   static calculateLocal (form) {
@@ -76,11 +80,11 @@ export default class Form {
     const duration = Moment.duration(milliseconds / 1000, 'seconds').format('HH:mm', {trim: false})
 
     return {
-      start: startDate,
-      end: endDate,
-      break: breakDuration,
+      start: form.value.start,
+      end: form.value.end,
+      break: form.value.break,
       duration: duration,
-      day: ''
+      date: form.value.date
     }
   }
 }

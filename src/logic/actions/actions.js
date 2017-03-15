@@ -12,19 +12,17 @@ import Form from '../reducers/calculate'
 export function fetchCalculation (form) {
     // TODO async resolve should move to middleware
   return (dispatch) => {
-    if (navigator.onLine) {
-      Form.calculateRemote(form).then(result => {
-        dispatch({
-          type: CALCULATE,
-          form: result
-        })
+    Form.fetchCalculation(form).then(result => {
+      dispatch({
+        type: CALCULATE,
+        form: result
       })
-    } else {
+    }).catch(() => {
       dispatch({
         type: CALCULATE,
         form: Form.calculateLocal(form)
       })
-    }
+    })
   }
 }
 
