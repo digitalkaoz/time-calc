@@ -90,8 +90,8 @@ class Form extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    value: state.calculate.current,
-    edit: state.calculate.edit
+    value: state.form.current,
+    edit: state.form.edit
   }
 }
 

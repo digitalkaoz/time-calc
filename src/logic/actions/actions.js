@@ -6,83 +6,80 @@ export const DELETE_TIME = 'DELETE_TIME'
 export const DOWNLOAD_TIMES = 'DOWNLOAD_TIMES'
 export const RESET_CALCULATION = 'RESET_CALCULATION'
 export const EDIT_TIME = 'EDIT_TIME'
+export const CALCULATION_FETCHED = 'CALCULATION_FETCHED'
+export const TIMES_CLEANED = 'TIMES_CLEANED'
+export const TIMES_LOADED = 'TIMES_LOADED'
 
-import Form from '../reducers/calculate'
+export function timesLoaded (times) {
+  return {
+    type: TIMES_LOADED,
+    times: times
+  }
+}
+
+export function calculationFetched (calculation) {
+  return {
+    type: CALCULATION_FETCHED,
+    calculation: calculation
+  }
+}
 
 export function fetchCalculation (form) {
-    // TODO async resolve should move to middleware
-  return (dispatch) => {
-    Form.fetchCalculation(form).then(result => {
-      dispatch({
-        type: CALCULATE,
-        form: result
-      })
-    }).catch(() => {
-      dispatch({
-        type: CALCULATE,
-        form: Form.calculateLocal(form)
-      })
-    })
+  return {
+    type: CALCULATE,
+    form: form
+  }
+}
+
+export function timesCleaned () {
+  return {
+    type: TIMES_CLEANED
   }
 }
 
 export function resetCalculation () {
-  return (dispatch) => {
-    dispatch({
-      type: RESET_CALCULATION
-    })
+  return {
+    type: RESET_CALCULATION
   }
 }
 
 export function save (time, index) {
-  return (dispatch) => {
-    dispatch({
-      type: ADD_TIME,
-      time: time,
-      index: index
-    })
+  return {
+    type: ADD_TIME,
+    time: time,
+    index: index
   }
 }
 
 export function loadTimes () {
-  return (dispatch) => {
-    dispatch({
-      type: LOAD_TIMES
-    })
+  return {
+    type: LOAD_TIMES
   }
 }
 
 export function clearTimes () {
-  return (dispatch) => {
-    dispatch({
-      type: CLEAR_TIMES
-    })
+  return {
+    type: CLEAR_TIMES
   }
 }
 
 export function deleteTime (time) {
-  return (dispatch) => {
-    dispatch({
-      type: DELETE_TIME,
-      time: time
-    })
+  return {
+    type: DELETE_TIME,
+    time: time
   }
 }
 
 export function downloadTimes (times) {
-  return (dispatch) => {
-    dispatch({
-      type: DOWNLOAD_TIMES,
-      times: times
-    })
+  return {
+    type: DOWNLOAD_TIMES,
+    times: times
   }
 }
 
 export function editTime (time) {
-  return (dispatch) => {
-    dispatch({
-      type: EDIT_TIME,
-      time: time
-    })
+  return {
+    type: EDIT_TIME,
+    time: time
   }
 }

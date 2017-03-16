@@ -1,5 +1,4 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import './Button.css'
 import autoBind from 'react-autobind'
 import 'material-design-lite/src/button/button'
@@ -26,12 +25,4 @@ class Button extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    times: state.timelist.times
-  }
-}
-
-export default connect(
-    mapStateToProps,
-)(Button)
+export default Button

@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux'
 
 import Timelist from './timelist'
-import Form from './calculate'
+import Form from './form'
 
 export default combineReducers({
   timelist: Timelist.dispatch,
-  calculate: Form.dispatch
+  form: Form.dispatch
 })
