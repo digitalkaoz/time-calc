@@ -38,7 +38,6 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
     "redux-saga": "^0.14.3",
-    "redux-thunk": "^2.2.0",
     "store": "^2.0.4",
     "unidragger": "digitalkaoz/unidragger#patch-1",
     "unipointer": "digitalkaoz/unipointer#patch-1"
