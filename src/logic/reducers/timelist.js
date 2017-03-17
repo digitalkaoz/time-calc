@@ -9,7 +9,7 @@ export default class Timelist {
     return Timelist.instance.process(state, action)
   }
 
-  process (state = { times: [] }, action) {
+  process (state, action) {
     this.state = state
     this.times = state.times || []
     this.action = action

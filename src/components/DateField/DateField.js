@@ -1,51 +1,31 @@
 import React from 'react'
-import {withFormValue, ErrorList} from 'react-forms'
+import AbstractDateTimeField from '../AbstractDateTimeField'
+import {ErrorList, withFormValue} from 'react-forms'
 
 import DatePicker from 'md-date-time-picker/dist/js/mdDateTimePicker'
-import autoBind from 'react-autobind'
-import Moment from 'moment'
 
 import './DateField.css'
 
-class DatepickerField extends React.Component {
-  constructor (props) {
-    super(props)
-
-    autoBind(this)
+export class DatepickerField extends AbstractDateTimeField {
+  static propTypes = {
+    formValue: React.PropTypes.object.isRequired,
+    label: React.PropTypes.string,
+    select: React.PropTypes.string.isRequired
   }
 
-  componentDidMount () {
-    this.refs.field.addEventListener('onOk', this.onOk)
-
-    const dialog = new DatePicker({
-      type: 'date',
-      trigger: document.getElementById(this.props.select)
+  createPicker () {
+    return new DatePicker({
+      type: 'date'
     })
-    dialog.toggle.bind(dialog)
-
-    this.setState({dialog})
   }
 
-  componentDidUpdate () {
-        // default form value fix form react-forms
-    if (this.props.formValue.value === undefined) {
-      if (this.refs.field && this.refs.field.parentNode.MaterialTextfield) {
-        this.refs.field.parentNode.MaterialTextfield.change(new Moment().format('L'))
-        if (this.props.formValue.errorList.length > 0) {
-          this.refs.field.parentNode.classList.add('is-invalid')
-        }
-      }
-    }
+  updateDialogDate () {
+    this.state.dialog.time = AbstractDateTimeField.date(this.props.formValue.value)
+    // this.setState({dialog: {...this.state.dialog, time : AbstractDateTimeField.date(this.props.formValue.value)}});
+  }
 
-    if (this.state.dialog) {
-      // eslint-disable-next-line
-      this.state.dialog.time = this.props.formValue.value ? new Moment(this.props.formValue.value, 'L') : new Moment()
-    }
-
-        // always dirty b.c. of mdl issues with time/date inputs
-    if (this.refs.field && this.refs.field.parentNode.MaterialTextfield) {
-      this.refs.field.parentNode.classList.add('is-dirty')
-    }
+  updateMaterialDate () {
+    this.refs.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.date())
   }
 
   render () {
@@ -53,16 +33,15 @@ class DatepickerField extends React.Component {
 
     return (
       <div className={classes}>
-        <input id={this.props.select} className='mdl-textfield__input' readOnly='true' ref='field' type='text' value={this.props.formValue.value} onFocus={this.onToggle} onChange={this.onChange} />
+        <input id={this.props.select} className='mdl-textfield__input' readOnly ref='field' type='text'
+          value={this.props.formValue.value} onFocus={this.onToggle} onChange={this.onChange} />
         <label className='mdl-textfield__label'>{this.props.label}</label>
         <ErrorList className='mdl-textfield__error' formValue={this.props.formValue} />
       </div>
     )
   }
 
-  onToggle = () => this.state.dialog.toggle();
-  onOk = () => this.props.formValue.update(this.state.dialog.time.format('L'))
-  onChange = (e) => this.props.formValue.update(e.target.value)
+  onOk = () => this.props.formValue.update(AbstractDateTimeField.date(this.state.dialog.time))
 }
 
 export default withFormValue(DatepickerField)

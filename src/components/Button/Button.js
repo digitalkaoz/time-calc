@@ -4,6 +4,13 @@ import autoBind from 'react-autobind'
 import 'material-design-lite/src/button/button'
 
 class Button extends React.Component {
+  static propTypes = {
+    invoke: React.PropTypes.func,
+    context: React.PropTypes.any,
+    classes: React.PropTypes.string,
+    icon: React.PropTypes.string
+  }
+
   constructor (props) {
     super(props)
 
@@ -18,7 +25,7 @@ class Button extends React.Component {
     const classes = 'mdl-button mdl-js-button mdl-js-ripple-effect ' + (this.props.classes || '')
 
     return (
-      <button className={classes} onClick={this.onClick}>
+      <button disabled={!this.props.invoke} className={classes} onClick={this.onClick}>
         <i className='material-icons'>{ this.props.icon }</i>
       </button>
     )

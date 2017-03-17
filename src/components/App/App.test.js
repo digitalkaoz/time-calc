@@ -1,10 +1,19 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import App from './App'
+import { shallow } from 'enzyme'
+import { Provider } from 'react-redux'
+import 'jest-enzyme'
 
-import {it} from 'jest'
+describe('Component - App', () => {
+  it('has the correct title', () => {
+    const component = shallow(<App />)
 
-it('renders without crashing', () => {
-  const div = document.createElement('div')
-  ReactDOM.render(<App />, div)
+    expect(component.find('.mdl-layout-title')).toIncludeText('Time - Calculator')
+  })
+
+  it('wraps everything with redux', () => {
+    const component = shallow(<App />)
+
+    expect(component.find(Provider)).toHaveProp('store')
+  })
 })

@@ -2,7 +2,7 @@ import React from 'react'
 import {Fieldset, createValue} from 'react-forms'
 import TimeField from '../TimeField/TimeField'
 import DisplayField from '../DisplayField/DisplayField'
-import DatepickerField from '../DateField/DateField'
+import DateField from '../DateField/DateField'
 import { connect } from 'react-redux'
 import {fetchCalculation, save, resetCalculation} from '../../logic/actions/actions'
 import Button from './../Button/Button'
@@ -25,23 +25,30 @@ export const SCHEMA = {
   }
 }
 
-class Form extends React.Component {
+export class Form extends React.Component {
+  static propTypes = {
+    save: React.PropTypes.func.isRequired,
+    calculate: React.PropTypes.func.isRequired,
+    edit: React.PropTypes.bool
+  }
+
   constructor (props) {
     super(props)
 
     autoBind(this)
 
-    let formValue = createValue({
-      value: {
-        date: Moment().format('L')
-      },
-      onChange: this.onChange,
-      schema: SCHEMA
-    })
+    const formValue = this.createForm({date: Moment().format('L')})
 
     this.state = {formValue}
   }
 
+  createForm (data) {
+    return createValue({
+      value: data,
+      onChange: this.onChange,
+      schema: SCHEMA
+    })
+  }
   onChange (formValue) {
     if (formValue._errorList.length === 0) {
       this.props.calculate(formValue)
@@ -51,12 +58,7 @@ class Form extends React.Component {
   }
 
   componentWillReceiveProps (props) {
-    let formValue = createValue({
-      value: props.value,
-      onChange: this.onChange,
-      schema: SCHEMA
-    })
-
+    const formValue = this.createForm(props.value)
     this.state = {formValue}
   }
 
@@ -73,14 +75,14 @@ class Form extends React.Component {
           <TimeField select='break' label='Break' timer={false} />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone'>
-          <DatepickerField select='date' label='Day' />
+          <DateField select='date' label='Day' />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--6-col-phone'>
           <DisplayField label='Duration' value={(this.props.value && this.props.value.duration) || ''} />
         </div>
         <div className='mdl-cell mdl-cell--2-col mdl-cell mdl-cell--4-col-tablet mdl-cell mdl-cell--6-col-phone'>
           {(this.props.value && this.props.value.duration) &&
-            <Button invoke={this.props.save} context={this} icon={this.props.edit !== undefined ? 'save' : 'add'} classes='mdl-button--raised mdl-js-ripple-effect mdl-button--accent' />
+            <Button invoke={this.props.save} context={this} icon={this.props.edit ? 'save' : 'add'} classes='mdl-button--raised mdl-js-ripple-effect mdl-button--accent' />
           }
         </div>
       </Fieldset>

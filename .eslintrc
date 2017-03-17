@@ -3,9 +3,16 @@
   "plugins": [
     "react"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     }
+  },
+  "env": {
+    "browser": true,
+    "jest": true,
+    "serviceworker": true,
+    "node": true
   }
 }

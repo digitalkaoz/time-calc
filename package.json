@@ -12,12 +12,17 @@
     "babel-preset-stage-0": "^6.22.0",
     "concurrently": "^3.2.0",
     "critical": "^0.8.4",
+    "enzyme": "^2.7.1",
+    "enzyme-redux": "^0.1.6",
     "eslint": "^3.17.1",
     "eslint-plugin-react": "^6.10.0",
     "inline-critical": "^2.4.0",
+    "jest-enzyme": "^2.1.2",
     "jsdom": "^9.11.0",
     "node-sass": "^4.5.0",
+    "react-addons-test-utils": "^15.4.2",
     "react-scripts": "^0.9",
+    "redux-test-utils": "^0.1.2",
     "standard": "^9.0.0",
     "sw-precache": "^5.0.0"
   },
@@ -54,7 +59,7 @@
     "server:build": "npm run ssr && npm run sw",
     "deploy": "cd server && npm run deploy",
     "sw": "sw-precache --config=scripts/sw-precache-config.js",
-    "cs": "standard --fix src/**/**/*.js server/src/**/*.js -v --parser babel-eslint",
+    "cs": "standard --fix src/**/*.js src/**/**/*.js server/src/**/*.js -v --color --parser babel-eslint --env jest --env browser --env node --env serviceWorker",
     "ssr": "BABEL_ENV=production node_modules/.bin/babel-node scripts/ssr.js"
   }
 }
