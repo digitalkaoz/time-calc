@@ -34,7 +34,7 @@ function * addTime (action) {
 
 function * deleteTime (action) {
   let times = yield call(StoreHelper.loadTimes)
-  times = times.filter(t => JSON.stringify(t) !== JSON.stringify(action.time))
+  times = times.filter(t => JSON.stringify(t) !== JSON.stringify(action.time)) // TODO better use index?
 
   yield call(StoreHelper.saveTimes, times)
   yield loadTimesFromStore()

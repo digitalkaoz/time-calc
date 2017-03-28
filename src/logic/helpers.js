@@ -1,5 +1,6 @@
 import store from 'store/dist/store.modern'
 import Moment from 'moment'
+import 'moment-duration-format'
 import fetch from 'isomorphic-fetch'
 
 export class CalculationHelper {
@@ -8,6 +9,7 @@ export class CalculationHelper {
       return CalculationHelper.calculateRemote(form)
     }
 
+    // eslint-disable-next-line no-undef
     return new Promise((resolve) => {
       resolve(CalculationHelper.calculateLocal(form))
     })
@@ -26,7 +28,10 @@ export class CalculationHelper {
 
     return fetch((process.env.REACT_APP_SERVER || '/') + 'calculate?' + query)
             .then(response => response.json())
-            .catch((e) => CalculationHelper.calculateLocal(form))
+            .catch((e) => {
+              console.log(e)
+              return CalculationHelper.calculateLocal(form)
+            })
   }
 
   static calculateLocal (form) {
@@ -48,7 +53,7 @@ export class CalculationHelper {
 
 export class TimeHelper {
   static sortTimes (times) {
-    times = times.sort((a, b) => {
+    return times.sort((a, b) => {
       a = Moment(a.date, 'L')
       b = Moment(b.date, 'L')
 
@@ -61,7 +66,6 @@ export class TimeHelper {
       }
       return 0
     })
-    return times
   }
 
   static downloadTimes (times) {

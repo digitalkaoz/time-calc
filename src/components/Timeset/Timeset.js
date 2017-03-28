@@ -2,55 +2,38 @@ import React from 'react'
 import {connect} from 'react-redux'
 import Button from './../Button/Button'
 import Moment from 'moment'
-import 'moment-duration-format'
-import autoBind from 'react-autobind'
-
+import pure from 'recompose/pure'
+import withDialog from '../Dialog/Dialog'
 import {deleteTime, editTime} from '../../logic/actions/actions'
 import './Timeset.css'
 
-class Timeset extends React.Component {
-  constructor (props) {
-    super(props)
+export const Timeset = ({time, onEditTime, toggleDialog, index}) => {
+  const date = new Moment(time.date, 'L').format('LL') // TODO should be refactored out into time utils
+  const editContext = {index: index, time: time}
 
-    autoBind(this)
-  }
+  return <tr>
+    <td className='mdl-data-table__cell--non-numeric'>{date}</td>
+    <td className='mdl-cell--hide-phone'>{time.start}</td>
+    <td className='mdl-cell-- hide-phone'>{time.end}</td>
+    <td className='mdl-cell--hide-phone'>{time.break}</td>
+    <td>{time.duration}</td>
+    <td>
+      <Button invoke={onEditTime} context={editContext} icon='edit' />
+      <Button invoke={toggleDialog} context={time} icon='delete' />
+    </td>
+  </tr>
+}
 
-  onClose = () => document.querySelector('#deleteOne').close();
-  onDelete () {
-    document.querySelector('#deleteOne').close()
-    this.props.deleteTime(this.props.time)
-  }
-
-  onDialog = () => {
-    const dialog = document.querySelector('#deleteOne')
-
-    dialog.querySelector('.ok').removeEventListener('click', this.onDelete, false)
-    dialog.querySelector('.close').removeEventListener('click', this.onClose, false)
-
-    dialog.querySelector('.ok').addEventListener('click', this.onDelete, false)
-    dialog.querySelector('.close').addEventListener('click', this.onClose, false)
-
-    dialog.showModal()
-  }
-
-  render () {
-    return <tr>
-      <td className='mdl-data-table__cell--non-numeric'>{new Moment(this.props.time.date, 'L').format('LL')}</td>
-      <td className='mdl-cell--hide-phone'>{this.props.time.start}</td>
-      <td className='mdl-cell--hide-phone'>{this.props.time.end}</td>
-      <td className='mdl-cell--hide-phone'>{this.props.time.break}</td>
-      <td>{this.props.time.duration}</td>
-      <td>
-        <Button invoke={this.props.onEditTime} context={{index: this.props.index, time: this.props.time}} icon='edit' />
-        <Button invoke={this.onDialog} icon='delete' />
-      </td>
-    </tr>
-  }
+Timeset.propTypes = {
+  toggleDialog: React.PropTypes.func,
+  time: React.PropTypes.object.isRequired,
+  onEditTime: React.PropTypes.func.isRequired,
+  index: React.PropTypes.number.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    deleteTime: (time) => dispatch(deleteTime(time)),
+    onOk: (time) => dispatch(deleteTime(time)),
     onEditTime: (time) => dispatch(editTime(time))
   }
 }
@@ -58,4 +41,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
     null,
     mapDispatchToProps
-)(Timeset)
+)(withDialog(Timeset, 'deleteOne'))

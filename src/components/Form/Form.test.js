@@ -7,6 +7,7 @@ import 'jest-enzyme'
 import { shallowWithStore, shallowWithState } from 'enzyme-redux'
 import { createMockStore } from 'redux-test-utils'
 import { shallow, mount, render } from 'enzyme'
+import Moment from 'moment'
 
 describe('Component - Form', () => {
   const dispatch = jest.fn()
@@ -14,39 +15,27 @@ describe('Component - Form', () => {
   const calculate = jest.fn()
 
   it('renders every field', () => {
-    const component = mount(<Form save={save} edit={false} calculate={calculate} />)
-    const defaultValue = {errorList: [], value: undefined, update: jest.fn()}
+    const defaultValue = {errorList: [], update: jest.fn()}
+    const component = mount(<Form save={save} edit={undefined} calculate={calculate} formValue={defaultValue} />)
 
     expect(component.containsMatchingElement(<DisplayField label='Duration' value='' />)).toBeTruthy()
-    expect(component.find('input').length).toBe(5)
-
-    expect(component).toContainReact(<TimeField select='start' label='Start Time' formValue={defaultValue} mobile={false} timer={true} />) // finds but closing tag problem
-    expect(component.containsMatchingElement(<TimeField select='start' label='Start Time' formValue={defaultValue} mobile={false} timer={true} />)).toBeTruthy() // cant find anything
-    expect(component.debug()).toBe('') // debug
-      // expect(component).toContainReact(<DateField select='date' label='Day' formValue={{}}/>);
-      // expect(component.containsMatchingElement(<TimeField select='break' label='Break' mobile={false} timer={false} formValue={{errorList: [], value: undefined, update: jest.fn()}}/>)).toBeTruthy();
-      // expect(component).toContainReact(<TimeField select='end' label='End' formValue={{ value : undefined}}/>);
+    expect(component.containsMatchingElement(<DateField select='date' label='Day' />)).toBeTruthy()
+    expect(component.containsMatchingElement(<TimeField select='start' label='Start Time' mobile={false} timer />)).toBeTruthy()
+    expect(component.containsMatchingElement(<TimeField select='end' label='End Time' mobile={false} timer />)).toBeTruthy()
+    expect(component.containsMatchingElement(<TimeField select='break' label='Break' mobile={false} timer={false} />)).toBeTruthy()
   })
 
-  xit('triggers calculation in case of valid form', () => {
-    const expectedState = {
-      form: {
-        value: {
-          start: '',
-          end: '',
-          date: ''
-        }
-      }
-    }
-    const component = mount(<ConnectedForm dispatch={dispatch} store={createMockStore(expectedState)} />)
+  it('triggers calculation in case of valid form', () => {
+    const defaultValue = {errorList: [], update: jest.fn()}
+    const component = mount(<Form save={save} edit={undefined} calculate={calculate} formValue={defaultValue} />)
     const time = {target: {value: '12:00'}}
-    const date = {target: {value: '12/12/2012'}}
 
     component.find('#start').simulate('change', time)
     component.find('#end').simulate('change', time)
-    component.find('#date').simulate('change', date)
+    // component.find('#date').simulate('change', date) //TODO mh onChange doesnt fire?
 
-    expect(dispatch).toBeCalledWith({})
+    expect(calculate).toBeCalled()
+    expect(calculate.mock.calls[0][0].value).toMatchObject({start: '12:00', end: '12:00', date: new Moment().format('L')})
   })
 
   describe('form submit handling', () => {
@@ -79,7 +68,7 @@ describe('Component - Form', () => {
     it('has a save button for existing timesets', () => {
       const expectedState = {
         form: {
-          edit: true,
+          edit: 1,
           current: {
             duration: '02:00'
           }

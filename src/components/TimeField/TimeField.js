@@ -32,7 +32,7 @@ export class TimeField extends AbstractDateTimeField {
     if (typeof this.props.formValue.value === 'undefined') {
       this.refs.field.parentNode.MaterialTextfield.change(undefined)
     } else if (this.props.formValue.value) {
-      this.refs.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.time())
+      this.refs.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.time(this.props.formValue.value))
     }
   }
 
@@ -61,7 +61,7 @@ export class TimeField extends AbstractDateTimeField {
     this.state.dialog.time = AbstractDateTimeField.time(this.props.formValue.value)
   }
 
-  onUpdate = () => this.props.formValue.update(AbstractDateTimeField.time())
+  onUpdate = () => this.props.formValue.update(AbstractDateTimeField.time().format('HH:mm'))
   onOk = () => this.props.formValue.update(AbstractDateTimeField.time(this.state.dialog.time))
 }
 

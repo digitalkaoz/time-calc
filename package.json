@@ -16,6 +16,7 @@
     "enzyme-redux": "^0.1.6",
     "eslint": "^3.17.1",
     "eslint-plugin-react": "^6.10.0",
+    "fetch-mock": "^5.9.4",
     "inline-critical": "^2.4.0",
     "jest-enzyme": "^2.1.2",
     "jsdom": "^9.11.0",
@@ -24,7 +25,8 @@
     "react-scripts": "^0.9",
     "redux-test-utils": "^0.1.2",
     "standard": "^9.0.0",
-    "sw-precache": "^5.0.0"
+    "sw-precache": "^5.0.0",
+    "why-did-you-update": "^0.0.8"
   },
   "dependencies": {
     "dialog-polyfill": "^0.4.7",
@@ -40,6 +42,7 @@
     "react-dom": "^15.4.2",
     "react-forms": "beta",
     "react-redux": "^5.0.2",
+    "recompose": "^0.22.0",
     "redux": "^3.6.0",
     "redux-logger": "^2.8.2",
     "redux-saga": "^0.14.3",
@@ -55,6 +58,7 @@
     "client:start": "react-scripts start",
     "client:build": "rm -rf build/* && mv .env ._env && npm run build-css && react-scripts build && npm run server:build && mv ._env .env",
     "client:test": "react-scripts test --env=jsdom",
+    "client:coverage": "npm run client:test -- --coverage",
     "client:eject": "react-scripts eject",
     "server:build": "npm run ssr && npm run sw",
     "deploy": "cd server && npm run deploy",

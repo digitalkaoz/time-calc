@@ -25,11 +25,16 @@ export const SCHEMA = {
   }
 }
 
-export class Form extends React.Component {
+export class Form extends React.PureComponent {
   static propTypes = {
     save: React.PropTypes.func.isRequired,
     calculate: React.PropTypes.func.isRequired,
-    edit: React.PropTypes.bool
+    edit: React.PropTypes.number,
+    value: React.PropTypes.object.isRequired
+  }
+
+  static defaultProps = {
+    value: {}
   }
 
   constructor (props) {

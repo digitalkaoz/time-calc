@@ -13,4 +13,6 @@ body {
 
 .mdl-layout__header {
   background-color: #222;
+  -webkit-app-region: drag;
+  -webkit-user-select: none;
 }

@@ -29,7 +29,7 @@ class AbstractDateTimeField extends React.Component {
       return new Moment(value, format)
     }
 
-    return new Moment().format(format)
+    return new Moment()
   }
 
   static time (value) {
@@ -40,20 +40,16 @@ class AbstractDateTimeField extends React.Component {
     return AbstractDateTimeField.moment(value, 'L')
   }
 
-  createPicker () {
-  }
-
-  updateDialogDate () {
-  }
-
-  updateMaterialDate () {
-  }
+  createPicker () {}
+  updateDialogDate () {}
+  updateMaterialDate () {}
 
   componentDidMount () {
     this.refs.field.addEventListener('onOk', this.onOk)
     if (typeof document !== 'undefined') {
-      this.state.dialog.trigger = document.getElementById(this.props.select)
-      this.state.dialog.toggle.bind(this.state.dialog)
+      const dialog = this.state.dialog
+      dialog.trigger = document.getElementById(this.props.select)
+      dialog.toggle.bind(dialog)
     }
   }
 

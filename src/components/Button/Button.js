@@ -3,7 +3,7 @@ import './Button.css'
 import autoBind from 'react-autobind'
 import 'material-design-lite/src/button/button'
 
-class Button extends React.Component {
+class Button extends React.PureComponent {
   static propTypes = {
     invoke: React.PropTypes.func,
     context: React.PropTypes.any,
