@@ -1,6 +1,7 @@
 import React from 'react'
 import AbstractDateTimeField from '../AbstractDateTimeField'
 import {ErrorList, withFormValue} from 'react-forms'
+import Moment from 'moment'
 
 import DatePicker from 'md-date-time-picker/dist/js/mdDateTimePicker'
 
@@ -14,8 +15,13 @@ export class DatepickerField extends AbstractDateTimeField {
   }
 
   createPicker () {
+    const moment = new Moment()
+    moment.set('year', moment.get('year') + 1)
+
     return new DatePicker({
-      type: 'date'
+      type: 'date',
+      future: moment,
+      orientation: 'LANDSCAPE'
     })
   }
 

@@ -72,7 +72,7 @@ describe('Logic - TimeHelper', () => {
 
     TimeHelper.downloadTimes(times)
 
-    expect(window.open).toBeCalledWith('data:text/csv;charset=utf-8,date%0A12/12/2012%0A01/01/1970')
+    expect(window.open).toBeCalledWith('data:text/csv;charset=utf-8;base64,ImRhdGUiCiIxMi8xMi8yMDEyIgoiMDEvMDEvMTk3MCI=')
   })
 })
 

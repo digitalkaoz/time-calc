@@ -2,6 +2,7 @@ import store from 'store/dist/store.modern'
 import Moment from 'moment'
 import 'moment-duration-format'
 import fetch from 'isomorphic-fetch'
+import json2csv from 'json2csv'
 
 export class CalculationHelper {
   static fetchCalculation (form) {
@@ -28,8 +29,7 @@ export class CalculationHelper {
 
     return fetch((process.env.REACT_APP_SERVER || '/') + 'calculate?' + query)
             .then(response => response.json())
-            .catch((e) => {
-              console.log(e)
+            .catch(() => {
               return CalculationHelper.calculateLocal(form)
             })
   }
@@ -69,27 +69,15 @@ export class TimeHelper {
   }
 
   static downloadTimes (times) {
-    let lines = []
+    if (!times) {
+      return
+    }
 
-    times.forEach(function (line, index) {
-      let lineData = []
-      let headers = []
-      for (let key in line) {
-        if (line.hasOwnProperty(key)) {
-          lineData.push(line[key])
-        }
-        if (index === 0 && line.hasOwnProperty(key)) {
-          headers.push(key)
-        }
-      }
+    const headers = Object.getOwnPropertyNames(times[0])
+    const csv = json2csv({ data: times, fields: headers })
+    const csvContent = 'data:text/csv;charset=utf-8;base64,' + btoa(csv)
 
-      if (index === 0) {
-        lines.push('data:text/csv;charset=utf-8,' + headers.join(','))
-      }
-      lines.push(lineData.join(','))
-    })
-    const csvContent = lines.join('\n')
-    window.open(encodeURI(csvContent))
+    window.open(csvContent)
   }
 }
 
