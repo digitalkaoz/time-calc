@@ -1,5 +1,7 @@
 # Time Calculator
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/digitalkaoz/time-calc.svg)](https://greenkeeper.io/)
+
 https://time-calc.digitalkaoz.net
 
 ## Whats Inside
