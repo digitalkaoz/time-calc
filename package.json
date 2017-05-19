@@ -8,7 +8,7 @@
     "babel-plugin-transform-require-ignore": "^0.1.0",
     "babel-plugin-transform-runtime": "^6.22.0",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-react-app": "^2.1.1",
+    "babel-preset-react-app": "^3.0.0",
     "babel-preset-stage-0": "^6.22.0",
     "concurrently": "^3.2.0",
     "critical": "^0.8.4",
