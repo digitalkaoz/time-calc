@@ -17,7 +17,7 @@
     "eslint-plugin-react": "^7.1.0",
     "eslint": "^4.0.0",
     "fetch-mock": "^5.9.4",
-    "inline-critical": "^2.4.0",
+    "inline-critical": "^2.4.1",
     "jest-enzyme": "^3.1.1",
     "jsdom": "^11.0.0",
     "node-sass": "^4.5.3",
