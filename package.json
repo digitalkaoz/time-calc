@@ -19,7 +19,7 @@
     "fetch-mock": "^5.9.4",
     "inline-critical": "^2.4.0",
     "jest-enzyme": "^3.1.1",
-    "jsdom": "^10.0.0",
+    "jsdom": "^11.0.0",
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "^1.0.0",
