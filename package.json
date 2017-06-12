@@ -14,7 +14,7 @@
     "critical": "^0.8.4",
     "enzyme": "^2.7.1",
     "enzyme-redux": "^0.1.6",
-    "eslint": "^3.17.1",
+    "eslint": "^4.0.0",
     "eslint-plugin-react": "^7.0.1",
     "fetch-mock": "^5.9.4",
     "inline-critical": "^2.4.0",
