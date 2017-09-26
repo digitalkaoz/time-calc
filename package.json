@@ -41,7 +41,7 @@
     "moment-duration-format": "https://github.com/jsmreese/moment-duration-format/archive/dev.tar.gz",
     "react": "^15.4.2",
     "react-autobind": "^1.0.6",
-    "react-dom": "^15.6.1",
+    "react-dom": "^16.0.0",
     "react-forms": "beta",
     "react-redux": "^5.0.5",
     "recompose": "^0.25.0",
