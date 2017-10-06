@@ -44,7 +44,7 @@
     "react-dom": "^16.0.0",
     "react-forms": "beta",
     "react-redux": "^5.0.5",
-    "recompose": "^0.25.0",
+    "recompose": "^0.26.0",
     "redux": "^3.7.0",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.15.3",
