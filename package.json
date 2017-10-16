@@ -47,7 +47,7 @@
     "recompose": "^0.26.0",
     "redux": "^3.7.0",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^0.15.3",
+    "redux-saga": "^0.16.0",
     "store": "^2.0.9",
     "unidragger": "digitalkaoz/unidragger#patch-1",
     "unipointer": "digitalkaoz/unipointer#patch-1"
