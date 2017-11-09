@@ -24,7 +24,7 @@
     "node-sass": "^4.5.3",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "^1.0.7",
-    "redux-test-utils": "^0.1.2",
+    "redux-test-utils": "^0.2.0",
     "standard": "^10.0.2",
     "sw-precache": "^5.1.1",
     "why-did-you-update": "^0.0.8"
