@@ -27,7 +27,7 @@
     "redux-test-utils": "^0.2.0",
     "standard": "^10.0.2",
     "sw-precache": "^5.1.1",
-    "why-did-you-update": "^0.0.8"
+    "why-did-you-update": "^0.1.0"
   },
   "dependencies": {
     "dialog-polyfill": "^0.4.7",
