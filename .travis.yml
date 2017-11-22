@@ -25,7 +25,7 @@ deploy:
   acl: bucket_owner_full_control
   cache_control: "max-age=21600"
   on:
-    repo: digitalkaoz/time-calc.digitalkaoz.net
+    repo: digitalkaoz/time-calc
     branch: master
 
 after_deploy:
