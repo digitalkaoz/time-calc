@@ -1,11 +1,12 @@
 import React from 'react'
 import autoBind from 'react-autobind'
 import './Dialog.css'
+import PropTypes from 'prop-types';
 
 export default (WrappedComponent, id) => {
   return class Dialog extends React.PureComponent {
     static propTypes = {
-      onOk: React.PropTypes.func.isRequired
+      onOk: PropTypes.func.isRequired
     }
 
     context;

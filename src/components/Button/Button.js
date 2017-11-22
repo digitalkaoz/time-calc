@@ -2,13 +2,14 @@ import React from 'react'
 import './Button.css'
 import autoBind from 'react-autobind'
 import 'material-design-lite/src/button/button'
+import PropTypes from 'prop-types';
 
 class Button extends React.PureComponent {
   static propTypes = {
-    invoke: React.PropTypes.func,
-    context: React.PropTypes.any,
-    classes: React.PropTypes.string,
-    icon: React.PropTypes.string
+    invoke: PropTypes.func,
+    context: PropTypes.any,
+    classes: PropTypes.string,
+    icon: PropTypes.string
   }
 
   constructor (props) {

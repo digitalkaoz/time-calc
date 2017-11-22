@@ -1,0 +1,33 @@
+language: node_js
+sudo: false
+cache: yarn
+
+node_js:
+- '9'
+
+script:
+- yarn test
+- yarn client:build
+- yarn sw
+- yarn ssr
+
+before_deploy:
+- pip install --user awscli
+- export PATH=$PATH:$HOME/.local/bin
+
+deploy:
+  provider: s3
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: time-calc.digitalkaoz.net
+  local-dir: build
+  skip_cleanup: true
+  acl: bucket_owner_full_control
+  cache_control: "max-age=21600"
+  on:
+    repo: digitalkaoz/time-calc.digitalkaoz.net
+    branch: master
+
+after_deploy:
+- aws configure set preview.cloudfront true
+- aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"

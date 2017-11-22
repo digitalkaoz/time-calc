@@ -6,6 +6,7 @@ import pure from 'recompose/pure'
 import withDialog from '../Dialog/Dialog'
 import {deleteTime, editTime} from '../../logic/actions/actions'
 import './Timeset.css'
+import PropTypes from 'prop-types';
 
 export const Timeset = ({time, onEditTime, toggleDialog, index}) => {
   const date = new Moment(time.date, 'L').format('LL') // TODO should be refactored out into time utils
@@ -25,10 +26,10 @@ export const Timeset = ({time, onEditTime, toggleDialog, index}) => {
 }
 
 Timeset.propTypes = {
-  toggleDialog: React.PropTypes.func,
-  time: React.PropTypes.object.isRequired,
-  onEditTime: React.PropTypes.func.isRequired,
-  index: React.PropTypes.number.isRequired
+  toggleDialog: PropTypes.func,
+  time: PropTypes.object.isRequired,
+  onEditTime: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired
 }
 
 const mapDispatchToProps = (dispatch) => {

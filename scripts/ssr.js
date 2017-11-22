@@ -1,22 +1,9 @@
-import React from "react";
-import {renderToString} from "react-dom/server";
-import jsdom from "jsdom";
 import fs from "fs";
 import critical from "critical";
 import inline from "inline-critical";
 import csso from 'csso';
-import App from "../src/components/App/App";
 
 const BUILD_DIR = __dirname + '/../build/';
-
-let preRenderApp = function () {
-    const app = renderToString(<App />);
-    let document = jsdom.jsdom(fs.readFileSync(BUILD_DIR + 'index.html'));
-
-    document.getElementById('root').innerHTML = app;
-
-    fs.writeFileSync(BUILD_DIR + 'index.html', document.documentElement.outerHTML);
-};
 
 let injectCriticalCss = function () {
     critical.generate({
@@ -61,5 +48,4 @@ let injectCriticalCss = function () {
     });
 };
 
-preRenderApp();
 injectCriticalCss();

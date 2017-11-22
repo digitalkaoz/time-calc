@@ -7,6 +7,7 @@ import autoBind from 'react-autobind'
 import {connect} from 'react-redux'
 import {clearTimes, downloadTimes, loadTimes} from '../../logic/actions/actions'
 import withDialog from '../Dialog/Dialog'
+import PropTypes from 'prop-types';
 
 import './TimeList.css'
 import Timeset from '../Timeset/Timeset'
@@ -17,11 +18,11 @@ export class TimeList extends React.Component {
   };
 
   static propTypes = {
-    // times: React.PropTypes.array,
-    toggleDialog: React.PropTypes.func,
-    times: React.PropTypes.objectOf(React.PropTypes.object),
-    load: React.PropTypes.func.isRequired,
-    download: React.PropTypes.func.isRequired
+    // times: PropTypes.array,
+    toggleDialog: PropTypes.func,
+    times: PropTypes.objectOf(PropTypes.object),
+    load: PropTypes.func.isRequired,
+    download: PropTypes.func.isRequired
   }
 
   constructor (props) {

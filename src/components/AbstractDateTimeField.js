@@ -2,12 +2,13 @@ import React from 'react'
 import 'material-design-lite/src/textfield/textfield'
 import autoBind from 'react-autobind'
 import Moment from 'moment'
+import PropTypes from 'prop-types';
 
 class AbstractDateTimeField extends React.Component {
   static propTypes = {
-    formValue: React.PropTypes.object.isRequired,
-    label: React.PropTypes.string,
-    select: React.PropTypes.string.isRequired
+    formValue: PropTypes.object.isRequired,
+    label: PropTypes.string,
+    select: PropTypes.string.isRequired
   }
 
   constructor (props) {
@@ -45,7 +46,9 @@ class AbstractDateTimeField extends React.Component {
   updateMaterialDate () {}
 
   componentDidMount () {
-    this.refs.field.addEventListener('onOk', this.onOk)
+    if (this.field) {
+      this.field.addEventListener('onOk', this.onOk)
+    }
     if (typeof document !== 'undefined') {
       const dialog = this.state.dialog
       dialog.trigger = document.getElementById(this.props.select)
@@ -55,26 +58,28 @@ class AbstractDateTimeField extends React.Component {
 
   componentDidUpdate () {
         // default form value fix form react-forms
-    if (this.props.formValue.value === undefined) {
+    if (this.props.formValue.value === undefined && this.field) {
       this.resetValue()
     }
 
     this.updateDialogDate()
 
         // always dirty b.c. of mdl issues with time/date inputs
-    this.markDirty()
+    if (this.field) {
+      this.markDirty()
+    }
   }
 
   markDirty () {
-    this.refs.field.parentNode.classList.add('is-dirty')
+    this.field.parentNode.classList.add('is-dirty')
   }
 
   resetValue () {
     if (this.props.formValue.errorList.length > 0) {
-      this.refs.field.parentNode.classList.add('is-invalid')
+      this.field.parentNode.classList.add('is-invalid')
     }
 
-    if (this.refs.field.parentNode.MaterialTextfield) {
+    if (this.field.parentNode.MaterialTextfield) {
       this.updateMaterialDate()
     }
   }

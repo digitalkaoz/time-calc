@@ -2,6 +2,7 @@ import React from 'react'
 import AbstractDateTimeField from '../AbstractDateTimeField'
 import {ErrorList, withFormValue} from 'react-forms'
 import Moment from 'moment'
+import PropTypes from 'prop-types';
 
 import DatePicker from 'md-date-time-picker/dist/js/mdDateTimePicker'
 
@@ -9,9 +10,9 @@ import './DateField.css'
 
 export class DatepickerField extends AbstractDateTimeField {
   static propTypes = {
-    formValue: React.PropTypes.object.isRequired,
-    label: React.PropTypes.string,
-    select: React.PropTypes.string.isRequired
+    formValue: PropTypes.object.isRequired,
+    label: PropTypes.string,
+    select: PropTypes.string.isRequired
   }
 
   createPicker () {
@@ -31,7 +32,7 @@ export class DatepickerField extends AbstractDateTimeField {
   }
 
   updateMaterialDate () {
-    this.refs.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.date())
+    this.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.date())
   }
 
   render () {
@@ -39,7 +40,7 @@ export class DatepickerField extends AbstractDateTimeField {
 
     return (
       <div className={classes}>
-        <input id={this.props.select} className='mdl-textfield__input' readOnly ref='field' type='text'
+        <input id={this.props.select} className='mdl-textfield__input' readOnly ref={(input) => { this.textInput = input; }}  type='text'
           value={this.props.formValue.value} onFocus={this.onToggle} onChange={this.onChange} />
         <label className='mdl-textfield__label'>{this.props.label}</label>
         <ErrorList className='mdl-textfield__error' formValue={this.props.formValue} />

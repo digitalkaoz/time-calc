@@ -8,6 +8,7 @@ import {fetchCalculation, save, resetCalculation} from '../../logic/actions/acti
 import Button from './../Button/Button'
 import Moment from 'moment'
 import autoBind from 'react-autobind'
+import PropTypes from 'prop-types';
 
 import './Form.css'
 
@@ -27,10 +28,10 @@ export const SCHEMA = {
 
 export class Form extends React.PureComponent {
   static propTypes = {
-    save: React.PropTypes.func.isRequired,
-    calculate: React.PropTypes.func.isRequired,
-    edit: React.PropTypes.number,
-    value: React.PropTypes.object.isRequired
+    save: PropTypes.func.isRequired,
+    calculate: PropTypes.func.isRequired,
+    edit: PropTypes.number,
+    value: PropTypes.object.isRequired
   }
 
   static defaultProps = {

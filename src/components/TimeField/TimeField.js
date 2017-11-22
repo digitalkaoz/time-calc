@@ -3,13 +3,14 @@ import {ErrorList, withFormValue} from 'react-forms'
 import DatePicker from 'md-date-time-picker/dist/js/mdDateTimePicker'
 import Button from '../Button/Button'
 import AbstractDateTimeField from '../AbstractDateTimeField'
+import PropTypes from 'prop-types';
 
 import './TimeField.css'
 
 export class TimeField extends AbstractDateTimeField {
   static propTypes = {
-    mobile: React.PropTypes.bool,
-    timer: React.PropTypes.bool
+    mobile: PropTypes.bool,
+    timer: PropTypes.bool
   }
 
   static defaultProps = {
@@ -30,9 +31,9 @@ export class TimeField extends AbstractDateTimeField {
 
   updateMaterialDate () {
     if (typeof this.props.formValue.value === 'undefined') {
-      this.refs.field.parentNode.MaterialTextfield.change(undefined)
+      this.field.parentNode.MaterialTextfield.change(undefined)
     } else if (this.props.formValue.value) {
-      this.refs.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.time(this.props.formValue.value))
+      this.field.parentNode.MaterialTextfield.change(AbstractDateTimeField.time(this.props.formValue.value))
     }
   }
 
@@ -46,7 +47,7 @@ export class TimeField extends AbstractDateTimeField {
 
     return (
       <div className={classes}>
-        <input className='mdl-textfield__input' type='time' id={this.props.select} ref='field' value={this.props.formValue.value} placeholder='HH:mm' {...listeners} />
+        <input className='mdl-textfield__input' type='time' id={this.props.select} ref={(field) => { this.field = field; }}  value={this.props.formValue.value} placeholder='HH:mm' {...listeners} />
         <label className='mdl-textfield__label'>{this.props.label}</label>
         {this.props.formValue.errorList.length ? <ErrorList className='mdl-textfield__error' formValue={this.props.formValue} /> : undefined}
         {this.props.timer &&
