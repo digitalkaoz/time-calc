@@ -68,7 +68,7 @@ export class TimeList extends React.Component {
         </thead>
 
         <tbody>
-          { Object.keys(this.props.times).map((k) => <Timeset key={k} time={this.props.times[k]} index={parseInt(k)} />) }
+          { Object.keys(this.props.times).map((k) => <Timeset key={k} time={this.props.times[k]} index={parseInt(k,10)} />) }
           <tr>
             <td colSpan='4' />
             <td><b id='sum'>{ sum }</b></td>

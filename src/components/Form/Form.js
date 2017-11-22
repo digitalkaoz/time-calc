@@ -65,7 +65,7 @@ export class Form extends React.PureComponent {
 
   componentWillReceiveProps (props) {
     const formValue = this.createForm(props.value)
-    this.state = {formValue}
+    this.setState({formValue})
   }
 
   render () {
