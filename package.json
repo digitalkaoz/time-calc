@@ -55,7 +55,7 @@
     "unipointer": "digitalkaoz/unipointer#patch-1"
   },
   "scripts": {
-    "test": "jest --coverage",
+    "test": "react-scripts test --env=jsdom",
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch",
     "dev": "concurrently \"cd server && npm run dev\" \"npm run client:start\" \"npm run watch-css\"",
