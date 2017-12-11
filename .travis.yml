@@ -20,6 +20,7 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: web.time-calc.digitalkaoz.net
+  region: $AWS_DEFAULT_REGION
   local-dir: build
   skip_cleanup: true
   acl: bucket_owner_full_control
