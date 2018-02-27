@@ -35,7 +35,7 @@
     "get-size": "digitalkaoz/get-size#patch-1",
     "immutable": "^3.8.2",
     "isomorphic-fetch": "^2.2.1",
-    "json2csv": "^3.7.3",
+    "json2csv": "^4.0.0",
     "material-design-lite": "digitalkaoz/material-design-lite#feature/ssr-capability",
     "md-date-time-picker": "puranjayjain/md-date-time-picker#master",
     "moment": "^2.17.1",
