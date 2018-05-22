@@ -4,9 +4,9 @@ export const LOAD_TIMES = 'LOAD_TIMES'
 export const CLEAR_TIMES = 'CLEAR_TIMES'
 export const DELETE_TIME = 'DELETE_TIME'
 export const DOWNLOAD_TIMES = 'DOWNLOAD_TIMES'
-export const RESET_CALCULATION = 'RESET_CALCULATION'
-export const EDIT_TIME = 'EDIT_TIME'
-export const CALCULATION_FETCHED = 'CALCULATION_FETCHED'
+export const RESET_CALCULATION = '@@redux-form/RESET'
+export const EDIT_TIME = '@@redux-form/INITIALIZE'
+export const CALCULATION_FETCHED = '@@redux-form/CHANGE'
 export const TIMES_CLEANED = 'TIMES_CLEANED'
 export const TIMES_LOADED = 'TIMES_LOADED'
 
@@ -20,7 +20,8 @@ export function timesLoaded (times) {
 export function calculationFetched (calculation) {
   return {
     type: CALCULATION_FETCHED,
-    calculation: calculation
+    meta: {form: 'time', field: 'duration'},
+    payload: calculation.duration
   }
 }
 
@@ -39,7 +40,8 @@ export function timesCleaned () {
 
 export function resetCalculation () {
   return {
-    type: RESET_CALCULATION
+    type: RESET_CALCULATION,
+    meta: {form: 'time'}
   }
 }
 
@@ -80,6 +82,7 @@ export function downloadTimes (times) {
 export function editTime (time) {
   return {
     type: EDIT_TIME,
-    time: time
+    meta: {form: 'time'},
+    payload: {...time.time, index: time.index},
   }
 }

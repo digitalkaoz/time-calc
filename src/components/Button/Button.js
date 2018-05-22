@@ -1,36 +1,21 @@
-import React from 'react'
-import './Button.css'
-import autoBind from 'react-autobind'
-import 'material-design-lite/src/button/button'
-import PropTypes from 'prop-types';
+import React from "react";
+// import './Button.css'
+// import 'material-design-lite/src/button/button'
+import PropTypes from "prop-types";
 
-class Button extends React.PureComponent {
-  static propTypes = {
-    invoke: PropTypes.func,
-    context: PropTypes.any,
-    classes: PropTypes.string,
-    icon: PropTypes.string
-  }
+import Button from "@material-ui/core/Button";
 
-  constructor (props) {
-    super(props)
+const GenericButton = ({ invoke, context, classes, icon, type }) => (
+  <Button
+    disabled={!invoke}
+    variant="raised"
+    color="primary"
+    className={classes}
+    type={type || "button"}
+    onClick={() => type ? true : invoke(context)}
+  >
+    <i className="material-icons">{icon}</i>
+  </Button>
+);
 
-    autoBind(this)
-  }
-
-  onClick () {
-    this.props.invoke(this.props.context)
-  }
-
-  render () {
-    const classes = 'mdl-button mdl-js-button mdl-js-ripple-effect ' + (this.props.classes || '')
-
-    return (
-      <button disabled={!this.props.invoke} className={classes} onClick={this.onClick}>
-        <i className='material-icons'>{ this.props.icon }</i>
-      </button>
-    )
-  }
-}
-
-export default Button
+export default GenericButton;

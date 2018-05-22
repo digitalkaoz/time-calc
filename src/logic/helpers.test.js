@@ -80,11 +80,11 @@ describe('Logic - StoreHelper', () => {
   let storeGet
   let storeSet
 
-    // beforeAll(() => {
-    // TODO jest 19
-    //     storeGet = jest.spyOn(StoreHelper, 'get');
-    //     storeSet = jest.spyOn(StoreHelper, 'set');
-    // })
+  // beforeAll(() => {
+  // TODO jest 19
+  //     storeGet = jest.spyOn(StoreHelper, 'get');
+  //     storeSet = jest.spyOn(StoreHelper, 'set');
+  // })
 
   xit('returns an array of times from local-storage', () => {
     const times = StoreHelper.loadTimes()

@@ -3,7 +3,7 @@ import TimeField from './TimeField'
 import { shallow, mount, render } from 'enzyme'
 import 'jest-enzyme'
 import Moment from 'moment'
-import { setTimeout } from 'timers';
+import { setTimeout } from 'timers'
 
 describe('Component - TimeField', () => {
   const update = jest.fn()
@@ -21,7 +21,7 @@ describe('Component - TimeField', () => {
   it('renders a timer for picking current time if wanted', () => {
     const component = mount(<TimeField formValue={validValue} timer select='date' />)
 
-    expect(component.find('button')).toIncludeText('timer')      
+    expect(component.find('button')).toIncludeText('timer')
   })
 
   describe('Form Handling', () => {
