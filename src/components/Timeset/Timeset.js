@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import TableCell from '@material-ui/core/TableCell'
-import TableRow  from '@material-ui/core/TableRow'
+import TableRow from '@material-ui/core/TableRow'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import { withStyles } from '@material-ui/core/styles'
 
 import Moment from 'moment'
-// import pure from 'recompose/pure'
 import {connect} from 'react-redux'
 import withDialog from '../Dialog/Dialog'
 import {deleteTime, editTime} from '../../logic/actions/actions'
@@ -53,7 +52,7 @@ export const Timeset = ({classes, time, onEditTime, toggleDialog, index}) => {
       <IconButton onClick={() => onEditTime({index: index, time: time})} aria-label='Edit'>
         <EditIcon />
       </IconButton>
-      <IconButton onClick={() => toggleDialog(time, "Delete Time?", "really delete this TimeRecord?")} aria-label='Delete'>
+      <IconButton onClick={() => toggleDialog(time, 'Delete Time?', 'really delete this TimeRecord?')} aria-label='Delete'>
         <DeleteIcon />
       </IconButton>
     </TableCell>
@@ -68,6 +67,8 @@ Timeset.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
+export const StyledTimeset = withStyles(styles)(Timeset);
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onOk: (time) => dispatch(deleteTime(time)),
@@ -78,4 +79,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   null,
   mapDispatchToProps
-)(withStyles(styles)(withDialog(Timeset)))
+)(withDialog(StyledTimeset))

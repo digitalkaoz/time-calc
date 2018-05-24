@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableFooter from '@material-ui/core/TableFooter';
-import TableRow from '@material-ui/core/TableRow';
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableFooter from '@material-ui/core/TableFooter'
+import TableRow from '@material-ui/core/TableRow'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
@@ -30,7 +30,7 @@ const styles = theme => ({
     overflowX: 'auto'
   },
   important: {
-    //fontWeight: 'bold',
+    // fontWeight: 'bold',
   },
 
   hideMobile: {
@@ -40,11 +40,11 @@ const styles = theme => ({
   }
 })
 
-export class TimeList extends React.Component {
+export class TimeList extends React.PureComponent {
   static defaultProps = {
     times: {},
-    deleteAllTitle: "Delete all TimeRecords?",
-    deleteAllHelp: "Do you really want to wipe out all Data?"
+    deleteAllTitle: 'Delete all TimeRecords?',
+    deleteAllHelp: 'Do you really want to wipe out all Data?'
   };
 
   static propTypes = {
@@ -54,7 +54,7 @@ export class TimeList extends React.Component {
     download: PropTypes.func.isRequired,
     classes: PropTypes.object.isRequired,
     deleteAllHelp: PropTypes.string,
-    deleteAllTitle: PropTypes.string,
+    deleteAllTitle: PropTypes.string
   }
 
   constructor (props) {
@@ -119,6 +119,8 @@ export class TimeList extends React.Component {
   }
 }
 
+export const StyledTimeList = withStyles(styles)(TimeList);
+
 const mapStateToProps = (state) => {
   return {
     times: state.timelist.times
@@ -136,4 +138,4 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(withDialog(TimeList)))
+)(withDialog(StyledTimeList))

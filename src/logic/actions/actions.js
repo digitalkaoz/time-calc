@@ -83,6 +83,6 @@ export function editTime (time) {
   return {
     type: EDIT_TIME,
     meta: {form: 'time'},
-    payload: {...time.time, index: time.index},
+    payload: {...time.time, index: time.index}
   }
 }

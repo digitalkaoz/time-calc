@@ -5,10 +5,7 @@ import {parse} from 'json2csv'
 
 export class CalculationHelper {
   static fetchCalculation (form) {
-    // eslint-disable-next-line no-undef
-    return new Promise((resolve) => {
-      resolve(CalculationHelper.calculateLocal(form))
-    })
+    return CalculationHelper.calculateLocal(form)
   }
 
   static calculateLocal (form) {
@@ -51,10 +48,38 @@ export class TimeHelper {
     }
 
     const headers = Object.getOwnPropertyNames(times[0])
-    const csv = parse(times, {fields: headers })
+    const csv = parse(times, { fields: headers })
     const csvContent = 'data:text/csv;charset=utf-8;base64,' + btoa(csv)
 
     window.open(csvContent)
+  }
+
+  static moment (value, format) {
+    if (value instanceof Moment) {
+      return value.format(format)
+    }
+
+    if (value) {
+      return new Moment(value, format)
+    }
+
+    return new Moment()
+  }
+
+  static now () {
+    return TimeHelper.time(new Moment())
+  }
+
+  static today () {
+    return TimeHelper.date(new Moment())
+  }
+
+  static time (value) {
+    return TimeHelper.moment(value, 'HH:mm')
+  }
+
+  static date (value) {
+    return TimeHelper.moment(value, 'L')
   }
 }
 
