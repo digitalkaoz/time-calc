@@ -15,7 +15,7 @@
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "enzyme-redux": "^0.2.0",
-    "eslint": "^4.11.0",
+    "eslint": "^5.0.0",
     "eslint-plugin-react": "^7.5.1",
     "fetch-mock": "^6.0.0",
     "inline-critical": "^4.0.1",
