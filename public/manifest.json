@@ -1,13 +1,19 @@
 {
-  "short_name": "time-calc",
-  "name": "Time Calculator",
+  "short_name": "Timesheet",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "favicon.png",
       "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ],
-  "start_url": "./",
+  "background_color": "#2196f3",
+  "theme_color": "#2196f3",
+  "start_url": "/",
   "display": "standalone"
 }

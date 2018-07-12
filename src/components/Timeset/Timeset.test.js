@@ -12,26 +12,26 @@ describe('Component - Timeset', () => {
   it('renders a date set', () => {
     const component = shallow(<StyledTimeset time={date} index={1} onEditTime={jest.fn()} />)
 
-    expect(component.html()).toMatchSnapshot();
+    expect(component.html()).toMatchSnapshot()
   })
 
   it('triggers the edit callback', () => {
-    const cb = jest.fn();
+    const cb = jest.fn()
     const component = shallow(<StyledTimeset time={date} index={1} onEditTime={cb} />)
 
-    expect(component.html()).toMatchSnapshot();
-    component.find('button[aria-label="Edit"]').simulate('click');
+    expect(component.html()).toMatchSnapshot()
+    component.find('button[aria-label="Edit"]').simulate('click')
 
-    expect(cb).toHaveBeenCalledWith({});
+    expect(cb).toHaveBeenCalledWith({})
   })
 
   it('triggers the delete callback', () => {
-    const cb = jest.fn();
+    const cb = jest.fn()
     const component = shallow(<StyledTimeset time={date} index={1} onEditTime={jest.fn()} toggleDialog={cb} />)
 
-    expect(component.html()).toMatchSnapshot();
-    component.find('button[aria-label="Delete"]').simulate('click');
+    expect(component.html()).toMatchSnapshot()
+    component.find('button[aria-label="Delete"]').simulate('click')
 
-    expect(cb).toHaveBeenCalledWith({});
+    expect(cb).toHaveBeenCalledWith({})
   })
 })

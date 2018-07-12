@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 
 import TableCell from '@material-ui/core/TableCell'
 import TableRow from '@material-ui/core/TableRow'
-import IconButton from '@material-ui/core/IconButton'
-import DeleteIcon from '@material-ui/icons/Delete'
-import EditIcon from '@material-ui/icons/Edit'
 import { withStyles } from '@material-ui/core/styles'
+
+import { batchActions } from 'redux-batched-actions'
 
 import Moment from 'moment'
 import {connect} from 'react-redux'
+
 import withDialog from '../Dialog/Dialog'
-import {deleteTime, editTime} from '../../logic/actions/actions'
+import Button from '../Button/Button'
+
+import {deleteTime, setField} from '../../logic/actions/actions'
 
 const styles = theme => ({
   hideMobile: {
@@ -49,12 +51,8 @@ export const Timeset = ({classes, time, onEditTime, toggleDialog, index}) => {
     <TableCell className={classes.hideMobile} numeric>{time.break}</TableCell>
     <TableCell className={classes.important} numeric>{time.duration}</TableCell>
     <TableCell>
-      <IconButton onClick={() => onEditTime({index: index, time: time})} aria-label='Edit'>
-        <EditIcon />
-      </IconButton>
-      <IconButton onClick={() => toggleDialog(time, 'Delete Time?', 'really delete this TimeRecord?')} aria-label='Delete'>
-        <DeleteIcon />
-      </IconButton>
+      <Button invoke={() => onEditTime({index: index, time: time})} label='Edit' icon='edit' />
+      <Button color='secondary' invoke={() => toggleDialog(time, 'Delete Time?', 'really delete this TimeRecord?')} label='Delete' icon='delete' />
     </TableCell>
   </TableRow>
 }
@@ -67,12 +65,19 @@ Timeset.propTypes = {
   classes: PropTypes.object.isRequired
 }
 
-export const StyledTimeset = withStyles(styles)(Timeset);
+export const StyledTimeset = withStyles(styles)(Timeset)
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onOk: (time) => dispatch(deleteTime(time)),
-    onEditTime: (time) => dispatch(editTime(time))
+    onEditTime: (time) => dispatch(batchActions([
+      setField('start', time.time.start),
+      setField('end', time.time.end),
+      setField('date', time.time.date),
+      setField('break', time.time.break),
+      setField('duration', time.time.duration),
+      setField('index', time.index)
+    ]))
   }
 }
 

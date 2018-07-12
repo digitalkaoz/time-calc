@@ -47,7 +47,7 @@ export class TimeHelper {
       return
     }
 
-    const headers = Object.getOwnPropertyNames(times[0])
+    const headers = Object.getOwnPropertyNames(times[0]).filter((name) => name !== 'index')
     const csv = parse(times, { fields: headers })
     const csvContent = 'data:text/csv;charset=utf-8;base64,' + btoa(csv)
 

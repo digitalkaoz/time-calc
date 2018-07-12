@@ -9,6 +9,7 @@ export const EDIT_TIME = '@@redux-form/INITIALIZE'
 export const CALCULATION_FETCHED = '@@redux-form/CHANGE'
 export const TIMES_CLEANED = 'TIMES_CLEANED'
 export const TIMES_LOADED = 'TIMES_LOADED'
+export const SET_FIELD = '@@redux-form/CHANGE'
 
 export function timesLoaded (times) {
   return {
@@ -76,6 +77,14 @@ export function downloadTimes (times) {
   return {
     type: DOWNLOAD_TIMES,
     times: times
+  }
+}
+
+export function setField (field, value) {
+  return {
+    type: SET_FIELD,
+    meta: {form: 'time', field},
+    payload: value
   }
 }
 

@@ -3,19 +3,19 @@ import React from 'react'
 // import 'material-design-lite/src/button/button'
 import PropTypes from 'prop-types'
 
-import Button from '@material-ui/core/Button'
+import IconButton from '@material-ui/core/IconButton'
 
-const GenericButton = ({ invoke, context, classes, icon, type }) => (
-  <Button
+const GenericButton = ({ invoke, context, classes, icon, type, color }) => (
+  <IconButton
     disabled={!invoke}
     variant='raised'
-    color='primary'
+    color={color || 'primary'}
     className={classes}
     type={type || 'button'}
     onClick={() => type ? true : invoke(context)}
   >
     <i className='material-icons'>{icon}</i>
-  </Button>
+  </IconButton>
 )
 
 GenericButton.propTypes = {
@@ -23,7 +23,8 @@ GenericButton.propTypes = {
   context: PropTypes.any,
   classes: PropTypes.string,
   icon: PropTypes.string,
-  type: PropTypes.string
+  type: PropTypes.string,
+  color: PropTypes.string
 }
 
 export default GenericButton

@@ -9,9 +9,6 @@ import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableFooter from '@material-ui/core/TableFooter'
 import TableRow from '@material-ui/core/TableRow'
-import IconButton from '@material-ui/core/IconButton'
-import DeleteIcon from '@material-ui/icons/Delete'
-import CloudDownloadIcon from '@material-ui/icons/CloudDownload'
 
 import Moment from 'moment'
 import 'moment-duration-format'
@@ -20,7 +17,7 @@ import autoBind from 'react-autobind'
 import {connect} from 'react-redux'
 import {clearTimes, downloadTimes, loadTimes} from '../../logic/actions/actions'
 import withDialog from '../Dialog/Dialog'
-
+import Button from '../Button/Button'
 import Timeset from '../Timeset/Timeset'
 
 const styles = theme => ({
@@ -91,12 +88,8 @@ export class TimeList extends React.PureComponent {
             <TableCell className={classes.hideMobile} numeric>Break</TableCell>
             <TableCell className={classes.important} numeric>Duration</TableCell>
             <TableCell>
-              <IconButton aria-label='Download' onClick={() => this.props.download(this.props.times)}>
-                <CloudDownloadIcon />
-              </IconButton>
-              <IconButton onClick={() => this.props.toggleDialog(this.props.times, this.props.deleteAllTitle, this.props.deleteAllHelp)} aria-label='Delete'>
-                <DeleteIcon />
-              </IconButton>
+              <Button invoke={() => this.props.download(this.props.times)} label='Download' icon='cloud_download' />
+              <Button color='secondary' invoke={() => this.props.toggleDialog(this.props.times, this.props.deleteAllTitle, this.props.deleteAllHelp)} label='Delete' icon='delete' />
             </TableCell>
           </TableRow>
         </TableHead>
@@ -119,7 +112,7 @@ export class TimeList extends React.PureComponent {
   }
 }
 
-export const StyledTimeList = withStyles(styles)(TimeList);
+export const StyledTimeList = withStyles(styles)(TimeList)
 
 const mapStateToProps = (state) => {
   return {

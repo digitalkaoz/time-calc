@@ -1,12 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { withStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
+import {
+  MuiThemeProvider,
+  createMuiTheme,
+  withStyles
+} from '@material-ui/core/styles'
+import blue from '@material-ui/core/colors/blue'
 
 import { Provider } from 'react-redux'
 import createStore from './../../logic/store'
@@ -24,24 +29,35 @@ const styles = () => ({
   }
 })
 
-const App = ({classes}) => <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}><Provider store={createStore()}>
-  <Grid container className={classes.root} spacing={16}>
-    <AppBar position='static' color='default'>
-      <Toolbar>
-        <Typography variant='title' color='inherit'>Timesheet</Typography>
-      </Toolbar>
-    </AppBar>
-    <Grid item xs={12}>
-      <Form />
-    </Grid>
-    <Grid item xs={12}>
-      <Paper>
-        <TimeList />
-      </Paper>
-    </Grid>
-  </Grid>
-</Provider>
-</MuiPickersUtilsProvider>
+const theme = createMuiTheme({
+  palette: {
+    primary: blue
+  }
+})
+
+const App = ({ classes }) => (
+    <Provider store={createStore()}>
+      <MuiThemeProvider theme={theme}>
+        <Grid container className={classes.root} spacing={16}>
+          <AppBar position='static' color='primary'>
+            <Toolbar>
+              <Typography variant='title' color='inherit'>Timesheet</Typography>
+            </Toolbar>
+          </AppBar>
+          <Grid item xs={12}>
+            <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
+            <Form />
+            </MuiPickersUtilsProvider>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper>
+              <TimeList />
+            </Paper>
+          </Grid>
+        </Grid>
+      </MuiThemeProvider>
+    </Provider>
+)
 
 App.propTypes = {
   classes: PropTypes.object.isRequired

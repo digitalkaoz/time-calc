@@ -21,7 +21,7 @@ describe('Component - Form', () => {
     expect(component.containsMatchingElement(<TimeField id='start' label='Start Time' />)).toBeTruthy()
     expect(component.containsMatchingElement(<TimeField id='end' label='End Time' />)).toBeTruthy()
     expect(component.containsMatchingElement(<TimeField id='break' label='Break' />)).toBeTruthy()
-    expect(component.containsMatchingElement(<TimeField id='duration' label='Duration' disabled={true} />)).toBeTruthy()
+    expect(component.containsMatchingElement(<TimeField id='duration' label='Duration' disabled />)).toBeTruthy()
   })
 
   it('triggers calculation in case of valid form', () => {

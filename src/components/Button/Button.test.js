@@ -5,10 +5,10 @@ import 'jest-enzyme'
 
 describe('Component - Button', () => {
   it('adds the classes from props.classes to the button', () => {
-    const component = shallow(<Button classes="foo" />)
+    const component = shallow(<Button classes='foo' />)
 
     expect(component.html()).toMatchSnapshot()
-  });
+  })
 
   it('adds the mdl-icon from props.icon', () => {
     const component = shallow(<Button icon='add' />)

@@ -9,7 +9,7 @@ describe('Logic - CalculationHelper', () => {
 
     expect(result).toEqual(expected)
   })
-});
+})
 
 describe('Logic - TimeHelper', () => {
   it('sorts a list of times by comparing the dates', () => {

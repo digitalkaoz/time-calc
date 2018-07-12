@@ -21,6 +21,7 @@ const DateField = ({input, label, showPicker}) => <DatePicker
   keyboard={showPicker !== false}
   label={label}
   format='L'
+  autoOk
   mask={dateMask}
   placeholder={TimeHelper.today()}
   disableOpenOnEnter

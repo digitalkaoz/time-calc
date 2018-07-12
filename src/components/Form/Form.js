@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import Grid from '@material-ui/core/Grid'
+import { withStyles } from '@material-ui/core/styles'
+import { Paper } from '@material-ui/core'
 
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
@@ -15,6 +17,15 @@ import TimeField from '../TimeField/TimeField'
 import DateField from '../DateField/DateField'
 import Button from '../Button/Button'
 import { TimeHelper } from '../../logic/helpers'
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1
+  },
+  control: {
+    padding: theme.spacing.unit * 2
+  }
+})
 
 const validate = (values, props) => {
   const errors = {}
@@ -32,68 +43,73 @@ const validate = (values, props) => {
 
 const Form = props => (
   <form onSubmit={props.handleSubmit(props.save)}>
-    <Grid container>
-      <Grid item xs={12} sm={6} md={2}>
-        <Field name='start' label='Start Time' component={TimeField} />
+    <Paper className={props.classes.control}>
+      <Grid container className={props.classes.root} spacing={16} justify='center'>
+        <Grid item xs={12} sm={6} md={2}>
+          <Field name='start' label='Start Time' component={TimeField} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={2}>
+          <Field name='end' label='End Time' component={TimeField} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={2}>
+          <Field
+            name='break'
+            label='Break Time'
+            defaultValue='00:00'
+            component={TimeField}
+            showPicker={false}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={2}>
+          <Field name='date' label='Day' component={DateField} />
+        </Grid>
+        <Grid item xs={12} sm={6} md={2}>
+          <Field
+            name='duration'
+            label='Duration'
+            component={TimeField}
+            showPicker={false}
+            disabled
+            defaultValue='00:00'
+          />
+        </Grid>
+        <Grid item xs={12} sm={6} md={2}>
+          {props.valid && <Button
+            invoke={() => null}
+            context={props}
+            type='submit'
+            icon={props.edit ? 'save' : 'add'}
+          />}
+          {props.edit && <Button
+            color='secondary'
+            invoke={props.reset}
+            context={props}
+            icon={'cancel'}
+          />}
+        </Grid>
       </Grid>
-      <Grid item xs={12} sm={6} md={2}>
-        <Field name='end' label='End Time' component={TimeField} />
-      </Grid>
-      <Grid item xs={12} sm={6} md={2}>
-        <Field
-          name='break'
-          label='Break Time'
-          defaultValue={'00:00'}
-          component={TimeField}
-          showPicker={false}
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md={2}>
-        <Field name='date' label='Day' component={DateField} />
-      </Grid>
-      <Grid item xs={12} sm={6} md={2}>
-        <Field
-          name='duration'
-          label='Duration'
-          component={TimeField}
-          showPicker={false}
-          disabled
-          defaultValue='00:00'
-        />
-      </Grid>
-      <Grid item xs={12} sm={6} md={2}>
-        {props.valid && <Button
-          invoke={() => null}
-          context={props}
-          type='submit'
-          icon={props.edit ? 'save' : 'add'}
-        />}
-        {props.edit && <Button
-          invoke={() => null}
-          context={props}
-          type='reset'
-          icon={'cancel'}
-        />}
-      </Grid>
-    </Grid>
-    <Field
-      name='index'
-      component={({input}) => <input type='hidden' {...input} />}
-    />
+      <Field
+        name='index'
+        // todo causes rerender: function is the problem, make it static?!
+        component={({input}) => <input type='hidden' {...input} />}
+      />
+    </Paper>
   </form>
 )
 
 const mapStateToProps = state => {
+  const edit = !!(state.form.time && state.form.time.values ? state.form.time.values.index !== undefined : undefined);
+
   return {
-    initialValues: {break: '00:00', date: TimeHelper.today()},
-    edit: !!(state.form.time && state.form.time.values ? state.form.time.values.index : undefined)
+    initialValues: edit ? undefined : {break: '00:00', date: TimeHelper.today()},
+    edit
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     calculate: formValue => dispatch(fetchCalculation(formValue)),
-
+    reset: () => dispatch(resetCalculation()),
     save: (values, dispatch) => {
       dispatch(save(values, values.index))
       dispatch(resetCalculation())
@@ -105,9 +121,11 @@ Form.propTypes = {
   edit: PropTypes.bool,
   valid: PropTypes.bool,
   save: PropTypes.func,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  reset: PropTypes.func,
+  classes: PropTypes.object
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  reduxForm({ form: 'time', validate })(Form)
+withStyles(styles)(reduxForm({ form: 'time', validate })(Form))
 )
