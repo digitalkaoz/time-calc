@@ -6,10 +6,11 @@ node_js:
 - '9'
 
 script:
-- yarn client:build
+- yarn build
 - yarn sw
 - yarn ssr
-- yarn test
+- yarn critical
+#- yarn test
 
 before_deploy:
 - pip install --user awscli
