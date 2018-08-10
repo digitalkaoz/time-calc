@@ -20,7 +20,8 @@ export class CalculationHelper {
       end: form.end,
       break: form.break,
       duration: duration,
-      date: form.date
+      date: form.date,
+      description: form.description
     }
   }
 }

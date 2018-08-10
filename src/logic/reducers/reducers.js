@@ -7,4 +7,3 @@ export default combineReducers({
   timelist: Timelist.dispatch,
   form: enableBatching(formReducer)
 })
-

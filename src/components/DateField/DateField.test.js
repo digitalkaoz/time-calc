@@ -7,7 +7,7 @@ import MomentUtils from 'material-ui-pickers/utils/moment-utils'
 import MuiPickersUtilsProvider from 'material-ui-pickers/utils/MuiPickersUtilsProvider'
 import moment from 'moment'
 import { TimeHelper } from '../../logic/helpers'
-import { IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core'
 
 describe('Component - Datefield', () => {
   const update = jest.fn()
@@ -18,29 +18,28 @@ describe('Component - Datefield', () => {
   it('renders correctly', () => {
     const component = shallow(<MuiPickersUtilsProvider utils={MomentUtils} moment={moment}><DateField input={validValue} label='foo' /></MuiPickersUtilsProvider>)
 
-    expect(component.html().replace(TimeHelper.today(), "TODAY")).toMatchSnapshot();
+    expect(component.html().replace(TimeHelper.today(), 'TODAY')).toMatchSnapshot()
   })
 
   it('can hide the picker', () => {
     const component = shallow(<MuiPickersUtilsProvider utils={MomentUtils} moment={moment}><DateField showPicker={false} input={validValue} label='foo' /></MuiPickersUtilsProvider>)
 
-    expect(component.html().replace(TimeHelper.today(), "TODAY")).toMatchSnapshot();
+    expect(component.html().replace(TimeHelper.today(), 'TODAY')).toMatchSnapshot()
   })
 
   it('can render a default value', () => {
     const component = shallow(<MuiPickersUtilsProvider utils={MomentUtils} moment={moment}><DateField showPicker={false} input={{onChange: update}} label='foo' /></MuiPickersUtilsProvider>)
 
-    expect(component.html().replace(TimeHelper.today(), "TODAY")).toMatchSnapshot();
+    expect(component.html().replace(TimeHelper.today(), 'TODAY')).toMatchSnapshot()
   })
 
   it('opens the datepicker on adornment click', () => {
     const component = shallow(<MuiPickersUtilsProvider utils={MomentUtils} moment={moment}><DateField input={validValue} label='foo' /></MuiPickersUtilsProvider>)
 
-    component.find(IconButton).simulate('click');
+    component.find(IconButton).simulate('click')
 
-    //expect(component.html().replace(TimeHelper.today(), "TODAY")).toMatchSnapshot();
+    // expect(component.html().replace(TimeHelper.today(), "TODAY")).toMatchSnapshot();
   })
-
 
   xdescribe('Form Handling', () => {
     it('set the form value from props', () => {

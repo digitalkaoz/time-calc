@@ -36,27 +36,27 @@ const theme = createMuiTheme({
 })
 
 const App = ({ classes }) => (
-    <Provider store={createStore()}>
-      <MuiThemeProvider theme={theme}>
-        <Grid container className={classes.root} spacing={16}>
-          <AppBar position='static' color='primary'>
-            <Toolbar>
-              <Typography variant='title' color='inherit'>Timesheet</Typography>
-            </Toolbar>
-          </AppBar>
-          <Grid item xs={12}>
-            <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
+  <Provider store={createStore()}>
+    <MuiThemeProvider theme={theme}>
+      <Grid container className={classes.root} spacing={16}>
+        <AppBar position='static' color='primary'>
+          <Toolbar>
+            <Typography variant='title' color='inherit'>Timesheet</Typography>
+          </Toolbar>
+        </AppBar>
+        <Grid item xs={12}>
+          <MuiPickersUtilsProvider utils={MomentUtils} moment={moment}>
             <Form />
-            </MuiPickersUtilsProvider>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper>
-              <TimeList />
-            </Paper>
-          </Grid>
+          </MuiPickersUtilsProvider>
         </Grid>
-      </MuiThemeProvider>
-    </Provider>
+        <Grid item xs={12}>
+          <Paper>
+            <TimeList />
+          </Paper>
+        </Grid>
+      </Grid>
+    </MuiThemeProvider>
+  </Provider>
 )
 
 App.propTypes = {

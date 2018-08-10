@@ -46,6 +46,7 @@ export const Timeset = ({classes, time, onEditTime, toggleDialog, index}) => {
 
   return <TableRow className={classes.row}>
     <TableCell className={classes.important}>{date}</TableCell>
+    <TableCell className={classes.hideMobile}>{time.description}</TableCell>
     <TableCell className={classes.hideMobile} numeric>{time.start}</TableCell>
     <TableCell className={classes.hideMobile} numeric>{time.end}</TableCell>
     <TableCell className={classes.hideMobile} numeric>{time.break}</TableCell>
@@ -76,7 +77,8 @@ const mapDispatchToProps = (dispatch) => {
       setField('date', time.time.date),
       setField('break', time.time.break),
       setField('duration', time.time.duration),
-      setField('index', time.index)
+      setField('index', time.index),
+      setField('description', time.time.description)
     ]))
   }
 }

@@ -83,6 +83,7 @@ export class TimeList extends React.PureComponent {
         <TableHead>
           <TableRow>
             <TableCell className={classes.important} >Day</TableCell>
+            <TableCell className={classes.hideMobile} >Description</TableCell>
             <TableCell className={classes.hideMobile} numeric>Start</TableCell>
             <TableCell className={classes.hideMobile} numeric>End</TableCell>
             <TableCell className={classes.hideMobile} numeric>Break</TableCell>
@@ -99,6 +100,7 @@ export class TimeList extends React.PureComponent {
         </TableBody>
         <TableFooter>
           <TableRow>
+            <TableCell />
             <TableCell />
             <TableCell className={classes.hideMobile} />
             <TableCell className={classes.hideMobile} />

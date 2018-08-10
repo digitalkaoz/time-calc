@@ -15,6 +15,7 @@ import {
 
 import TimeField from '../TimeField/TimeField'
 import DateField from '../DateField/DateField'
+import TextField from '../TextField/TextField'
 import Button from '../Button/Button'
 import { TimeHelper } from '../../logic/helpers'
 
@@ -45,6 +46,9 @@ const Form = props => (
   <form onSubmit={props.handleSubmit(props.save)}>
     <Paper className={props.classes.control}>
       <Grid container className={props.classes.root} spacing={16} justify='center'>
+        <Grid item xs={12}>
+          <Field name='description' label='Description' fullWidth component={TextField} />
+        </Grid>
         <Grid item xs={12} sm={6} md={2}>
           <Field name='start' label='Start Time' component={TimeField} />
         </Grid>
@@ -98,7 +102,7 @@ const Form = props => (
 )
 
 const mapStateToProps = state => {
-  const edit = !!(state.form.time && state.form.time.values ? state.form.time.values.index !== undefined : undefined);
+  const edit = !!(state.form.time && state.form.time.values ? state.form.time.values.index !== undefined : undefined)
 
   return {
     initialValues: edit ? undefined : {break: '00:00', date: TimeHelper.today()},
@@ -127,5 +131,5 @@ Form.propTypes = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-withStyles(styles)(reduxForm({ form: 'time', validate })(Form))
+  withStyles(styles)(reduxForm({ form: 'time', validate })(Form))
 )

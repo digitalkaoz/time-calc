@@ -18,7 +18,7 @@ const timeMask = (value) => {
   return hours.concat(':').concat(minutes)
 }
 
-/*if (keyboard) { localInputProps[${adornmentPosition}Adornment] = ( <InputAdornment position={adornmentPosition} {...InputAdornmentProps} disabled={disabled}> <IconButton onClick={this.openPicker}> <Icon> {keyboardIcon} </Icon> </IconButton> </InputAdornment> ); }*/
+/* if (keyboard) { localInputProps[${adornmentPosition}Adornment] = ( <InputAdornment position={adornmentPosition} {...InputAdornmentProps} disabled={disabled}> <IconButton onClick={this.openPicker}> <Icon> {keyboardIcon} </Icon> </IconButton> </InputAdornment> ); } */
 
 const TimeField = ({input, label, showPicker, disabled, defaultValue}) => <TimePicker
   value={input && input.value ? TimeHelper.time(input.value) : null}
