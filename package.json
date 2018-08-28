@@ -28,8 +28,8 @@
     "why-did-you-update": "^0.1.1"
   },
   "dependencies": {
+    "@material-ui/icons": "^3.0.0",
     "@material-ui/core": "^3.0.0",
-    "@material-ui/icons": "^2.0.1",
     "json2csv": "^4.2.1",
     "material-ui-pickers": "^1.0.0-rc.12",
     "moment": "^2.22.2",
