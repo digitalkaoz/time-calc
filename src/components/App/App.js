@@ -32,6 +32,9 @@ const styles = () => ({
 const theme = createMuiTheme({
   palette: {
     primary: blue
+  },
+  typography: {
+    fontDisplay: "swap"
   }
 })
 

@@ -1,5 +1,6 @@
 {
-  "short_name": "Timesheet",
+  "short_name": "TS",
+  "name" : "Timesheet",
   "icons": [
     {
       "src": "favicon.png",
