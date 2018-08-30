@@ -1,36 +1,34 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import TableCell from '@material-ui/core/TableCell'
-import TableRow from '@material-ui/core/TableRow'
-import { withStyles } from '@material-ui/core/styles'
+import { TableCell, TableRow, withStyles } from "@material-ui/core";
 
-import { batchActions } from 'redux-batched-actions'
+import { batchActions } from "redux-batched-actions";
+import { connect } from "react-redux";
 
-import Moment from 'moment'
-import {connect} from 'react-redux'
+import Moment from "moment";
 
-import withDialog from '../Dialog/Dialog'
-import Button from '../Button/Button'
+import withDialog from "../Dialog/Dialog";
+import Button from "../Button/Button";
 
-import {deleteTime, setField} from '../../logic/actions/actions'
+import { deleteTime, setField } from "../../connectors/redux/actions";
 
 const styles = theme => ({
   hideMobile: {
-    [theme.breakpoints.down('xs')]: {
-      display: 'none !important'
+    [theme.breakpoints.down("xs")]: {
+      display: "none !important"
     }
   },
 
   row: {
-    '&:nth-of-type(odd)': {
+    "&:nth-of-type(odd)": {
       backgroundColor: theme.palette.background.default
     },
-    '& button': {
+    "& button": {
       opacity: 0
     },
-    '&:hover': {
-      '& button': {
+    "&:hover": {
+      "& button": {
         opacity: 1
       }
     }
@@ -39,24 +37,45 @@ const styles = theme => ({
   important: {
     // fontWeight: 'bold',
   }
-})
+});
 
-export const Timeset = ({classes, time, onEditTime, toggleDialog, index}) => {
-  const date = new Moment(time.date, 'L').format('LL') // TODO should be refactored out into time utils
+export const Timeset = ({ classes, time, onEditTime, toggleDialog, index }) => {
+  const date = new Moment(time.date, "L").format("LL"); // TODO should be refactored out into time utils
 
-  return <TableRow className={classes.row}>
-    <TableCell className={classes.important}>{date}</TableCell>
-    <TableCell className={classes.hideMobile}>{time.description}</TableCell>
-    <TableCell className={classes.hideMobile} numeric>{time.start}</TableCell>
-    <TableCell className={classes.hideMobile} numeric>{time.end}</TableCell>
-    <TableCell className={classes.hideMobile} numeric>{time.break}</TableCell>
-    <TableCell className={classes.important} numeric>{time.duration}</TableCell>
-    <TableCell>
-      <Button invoke={() => onEditTime({index: index, time: time})} label='Edit' icon='edit' />
-      <Button color='secondary' invoke={() => toggleDialog(time, 'Delete Time?', 'really delete this TimeRecord?')} label='Delete' icon='delete' />
-    </TableCell>
-  </TableRow>
-}
+  return (
+    <TableRow className={classes.row}>
+      <TableCell className={classes.important}>{date}</TableCell>
+      <TableCell className={classes.hideMobile}>{time.description}</TableCell>
+      <TableCell className={classes.hideMobile} align="right">
+        {time.start}
+      </TableCell>
+      <TableCell className={classes.hideMobile} align="right">
+        {time.end}
+      </TableCell>
+      <TableCell className={classes.hideMobile} align="right">
+        {time.break}
+      </TableCell>
+      <TableCell className={classes.important} align="right">
+        {time.duration}
+      </TableCell>
+      <TableCell>
+        <Button
+          invoke={() => onEditTime({ index, time })}
+          label="Edit"
+          icon="edit"
+        />
+        <Button
+          color="secondary"
+          invoke={() =>
+            toggleDialog(time, "Delete Time?", "really delete this TimeRecord?")
+          }
+          label="Delete"
+          icon="delete"
+        />
+      </TableCell>
+    </TableRow>
+  );
+};
 
 Timeset.propTypes = {
   toggleDialog: PropTypes.func,
@@ -64,26 +83,27 @@ Timeset.propTypes = {
   onEditTime: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   classes: PropTypes.object.isRequired
-}
+};
 
-export const StyledTimeset = withStyles(styles)(Timeset)
+export const StyledTimeset = withStyles(styles)(Timeset);
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onOk: (time) => dispatch(deleteTime(time)),
-    onEditTime: (time) => dispatch(batchActions([
-      setField('start', time.time.start),
-      setField('end', time.time.end),
-      setField('date', time.time.date),
-      setField('break', time.time.break),
-      setField('duration', time.time.duration),
-      setField('index', time.index),
-      setField('description', time.time.description)
-    ]))
-  }
-}
+const mapDispatchToProps = dispatch => ({
+    onOk: time => dispatch(deleteTime(time)),
+    onEditTime: time =>
+      dispatch(
+        batchActions([
+          setField("start", time.time.start),
+          setField("end", time.time.end),
+          setField("date", time.time.date),
+          setField("break", time.time.break),
+          setField("duration", time.time.duration),
+          setField("index", time.index),
+          setField("description", time.time.description)
+        ])
+      )
+  });
 
 export default connect(
   null,
   mapDispatchToProps
-)(withDialog(StyledTimeset))
+)(withDialog(StyledTimeset));

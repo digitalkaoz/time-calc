@@ -1,19 +1,6 @@
 {
-  "env": {},
-  "ignore": [],
+  "extends": "react-static/.babelrc",
   "plugins": [
-    "transform-class-properties",
-    "transform-runtime",
-    [
-      "babel-plugin-transform-require-ignore",
-      {
-        "extensions": [".less", ".sass", ".css"]
-      }
-    ]
-  ],
-  "presets": [
-    "stage-0",
-    "env",
-    "react-app"
+    "@babel/plugin-proposal-class-properties"
   ]
 }

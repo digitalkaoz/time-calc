@@ -1,4 +1,4 @@
-import {TIMES_LOADED, TIMES_CLEANED} from '../actions/actions'
+import {TIMES_LOADED, TIMES_CLEANED} from '../actions'
 
 export default class Timelist {
   static dispatch (state = { times: [] }, action) {

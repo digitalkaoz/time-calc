@@ -1,6 +1,6 @@
 import { takeLatest, takeEvery, call, put } from 'redux-saga/effects'
 import {CalculationHelper, TimeHelper, StoreHelper} from '../helpers'
-import {CALCULATE, CLEAR_TIMES, LOAD_TIMES, ADD_TIME, DELETE_TIME, DOWNLOAD_TIMES, timesCleaned, calculationFetched, timesLoaded} from '../actions/actions'
+import {CALCULATE, CLEAR_TIMES, LOAD_TIMES, ADD_TIME, DELETE_TIME, DOWNLOAD_TIMES, timesCleaned, calculationFetched, timesLoaded} from '../actions'
 
 function * calculations (action) {
   const calc = yield call(CalculationHelper.fetchCalculation, action.form)

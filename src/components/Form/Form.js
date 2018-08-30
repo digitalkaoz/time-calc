@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/core/styles'
-import { Paper } from '@material-ui/core'
+import {Grid, Paper, withStyles} from '@material-ui/core'
 
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
@@ -11,13 +9,13 @@ import {
   fetchCalculation,
   save,
   resetCalculation
-} from '../../logic/actions/actions'
+} from '../../connectors/redux/actions'
 
 import TimeField from '../TimeField/TimeField'
 import DateField from '../DateField/DateField'
 import TextField from '../TextField/TextField'
 import Button from '../Button/Button'
-import { TimeHelper } from '../../logic/helpers'
+import { TimeHelper } from '../../connectors/redux/helpers'
 
 const styles = theme => ({
   root: {
@@ -83,12 +81,14 @@ const Form = props => (
             context={props}
             type='submit'
             icon={props.edit ? 'save' : 'add'}
+            label={props.edit ? 'Save' : 'Add'}
           />}
           {props.edit && <Button
             color='secondary'
             invoke={props.reset}
             context={props}
-            icon={'cancel'}
+            icon='cancel'
+            label="Cancel"
           />}
         </Grid>
       </Grid>

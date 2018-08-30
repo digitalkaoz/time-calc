@@ -22,10 +22,10 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: web.time-calc.digitalkaoz.net
   region: $AWS_DEFAULT_REGION
-  local-dir: build
+  local-dir: dist
   skip_cleanup: true
   acl: bucket_owner_full_control
-  cache_control: "max-age=172800"
+  cache_control: "s-maxage=172800"
   default_text_charset: 'utf-8'
   on:
     repo: digitalkaoz/time-calc

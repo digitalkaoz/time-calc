@@ -9,10 +9,9 @@ https://time-calc.digitalkaoz.net
 > all the fancy stuff out there ;)
 
 * react (unejected react-app)
-* redux
+* redux+saga
 * service-worker (works perfectly as PWA)
-* sass
-* totally educational koa2 server side app (as the app works perfect without backend)
+* material-ui
 
 ## Features
 
@@ -31,12 +30,6 @@ $ yarn install
 
 ```bash
 $ yarn cs       # fix codings standards
-$ yarn dev      # starts the dev environment
-$ yarn start    # production build running through koa2
+$ yarn start      # starts the dev environment
+$ yarn build    # production build
 ```
-
-## TODO
-
-* https://github.com/google/material-design-lite/pull/5054
-* https://github.com/desandro/draggabilly/pull/154
-* 

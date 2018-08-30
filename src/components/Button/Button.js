@@ -3,13 +3,14 @@ import React from 'react'
 // import 'material-design-lite/src/button/button'
 import PropTypes from 'prop-types'
 
-import IconButton from '@material-ui/core/IconButton'
+import {IconButton} from '@material-ui/core'
 
-const GenericButton = ({ invoke, context, classes, icon, type, color }) => (
+const GenericButton = ({ label, invoke, context, classes, icon, type, color }) => (
   <IconButton
     disabled={!invoke}
     variant='raised'
     color={color || 'primary'}
+    aria-label={label}
     className={classes}
     type={type || 'button'}
     onClick={() => type ? true : invoke(context)}
