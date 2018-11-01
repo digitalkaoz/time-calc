@@ -25,7 +25,7 @@
     "redux-test-utils": "^0.2.2",
     "standard": "^11.0.1",
     "sw-precache": "^5.2.1",
-    "why-did-you-update": "^0.1.1"
+    "why-did-you-update": "^0.2.0"
   },
   "dependencies": {
     "@material-ui/icons": "^3.0.0",
