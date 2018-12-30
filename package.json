@@ -17,7 +17,7 @@
     "enzyme-redux": "^0.2.1",
     "eslint": "^5.3.0",
     "eslint-plugin-react": "^7.10.0",
-    "inline-critical": "^4.0.4",
+    "inline-critical": "^5.0.0",
     "jest-enzyme": "^6.0.2",
     "react-addons-test-utils": "^15.6.2",
     "react-scripts": "^1.1.4",
