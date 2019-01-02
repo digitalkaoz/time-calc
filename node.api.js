@@ -40,9 +40,10 @@ export default () => ({
         }),
         new ServiceWorkerPlugin({
           cacheId: "Timesheet",
-          handleFetch: isBuild,
+          handleFetch: true,
           minify: true,
           navigateFallback: `/index.html`,
+          staticFileGlobs: ['/index.html'],
           staticFileGlobsIgnorePatterns: [/\.map$/, /\.jpeg$/, /\.jpg$/, /\.png$/, /\.mp4$/]
         })
       ];

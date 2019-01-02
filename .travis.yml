@@ -7,6 +7,8 @@ node_js:
 
 script:
 - yarn build
+- mkdir -p dist_html
+- mv dist/*.html dist_html
 #- yarn critical
 #- yarn test
 
@@ -15,19 +17,33 @@ before_deploy:
 - export PATH=$PATH:$HOME/.local/bin
 
 deploy:
-  provider: s3
-  access_key_id: $AWS_ACCESS_KEY_ID
-  secret_access_key: $AWS_SECRET_ACCESS_KEY
-  bucket: web.time-calc.digitalkaoz.net
-  region: $AWS_DEFAULT_REGION
-  local-dir: dist
-  skip_cleanup: true
-  acl: bucket_owner_full_control
-  cache_control: "s-maxage=172800"
-  default_text_charset: 'utf-8'
-  on:
-    repo: digitalkaoz/time-calc
-    branch: master
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: web.time-calc.digitalkaoz.net
+    region: $AWS_DEFAULT_REGION
+    local-dir: dist_html
+    skip_cleanup: true
+    acl: bucket_owner_full_control
+    cache_control: "s-maxage=31536000"
+    default_text_charset: 'utf-8'
+    on:
+      repo: digitalkaoz/time-calc
+      branch: master
+
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    bucket: web.time-calc.digitalkaoz.net
+    region: $AWS_DEFAULT_REGION
+    local-dir: dist
+    skip_cleanup: true
+    acl: bucket_owner_full_control
+    cache_control: "max-age=31536000"
+    default_text_charset: 'utf-8'
+    on:
+      repo: digitalkaoz/time-calc
+      branch: master
 
 after_deploy:
 - aws configure set preview.cloudfront true

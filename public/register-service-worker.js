@@ -22,7 +22,7 @@ if ("serviceWorker" in navigator) {
   // *Don't* register service worker file in, e.g., a scripts/ sub-directory!
   // See https://github.com/slightlyoff/ServiceWorker/issues/468
   navigator.serviceWorker
-    .register("/service-worker.js")
+    .register("/timesheet.js")
     .then(function(reg) {
       // updatefound is fired if service-worker.js changes.
       reg.onupdatefound = function() {
