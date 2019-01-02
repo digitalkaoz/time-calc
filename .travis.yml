@@ -3,13 +3,11 @@ sudo: false
 cache: yarn
 
 node_js:
-- '9'
+- 10
 
 script:
 - yarn build
-- yarn sw
-- yarn ssr
-- yarn critical
+#- yarn critical
 #- yarn test
 
 before_deploy:
