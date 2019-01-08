@@ -7663,10 +7663,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-static@^6.0.0:
-  version "6.1.5"
-  resolved "https://registry.yarnpkg.com/react-static/-/react-static-6.1.5.tgz#b0e3f8ef5bf2f30c75ef1d81b1dbf74a84709a51"
-  integrity sha512-nTzsJbHnvHLZ5aqNwNDS4QUXCzoZGqxjoF+1Ff1S7tr2IG9g+IipTh9R/Hn10McfruASirkI+neodsIwMuqwnw==
+react-static@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/react-static/-/react-static-6.2.0.tgz#3e1a66354f89c5307a9863c8d0a2708d584e187b"
+  integrity sha512-TS6xwgupJs4HNH6ryvh6ph0yBrtMCGPYNfQIdOw5hlbCsQDwuqbo1HDnOWlsU43uPwqfd0WSut7SCEsUgtqShg==
   dependencies:
     "@babel/cli" "^7.1.5"
     "@babel/core" "^7.2.2"
@@ -7738,7 +7738,6 @@ react-static@^6.0.0:
     thread-loader "^1.2.0"
     uglifyjs-webpack-plugin "^2.0.1"
     upath "^1.1.0"
-    update-notifier "^2.5.0"
     url-loader "^1.1.2"
     webpack "^4.25.1"
     webpack-bundle-analyzer "^3.0.3"
@@ -9436,7 +9435,7 @@ update-check@1.5.2:
     registry-auth-token "3.3.2"
     registry-url "3.1.0"
 
-update-notifier@^2.3.0, update-notifier@^2.5.0:
+update-notifier@^2.3.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/update-notifier/-/update-notifier-2.5.0.tgz#d0744593e13f161e406acb1d9408b72cad08aff6"
   integrity sha512-gwMdhgJHGuj/+wHJJs9e6PcCszpxR1b236igrOkUofGhqJuG+amlIKwApH1IW1WWl7ovZxsX49lMBWLxSdm5Dw==
