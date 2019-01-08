@@ -5,7 +5,7 @@
   "scripts": {
     "start": "react-static start",
     "build": "react-static build",
-    "test" : "jest --coverage",
+    "test": "jest --coverage",
     "cs": "prettier --write src"
   },
   "dependencies": {

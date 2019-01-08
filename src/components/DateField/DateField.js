@@ -27,13 +27,15 @@ const DateField = ({ input, label, showPicker }) => (
     label={label}
     format="L"
     autoOk
+    name={label.replace(/ /g, "_").toLowerCase()}
     mask={dateMask}
     placeholder={TimeHelper.today()}
     disableOpenOnEnter
     fullWidth
     showTodayButton
     InputLabelProps={{
-      shrink: true
+      shrink: true,
+      htmlFor: label.replace(/ /g, "_").toLowerCase()
     }}
   />
 );

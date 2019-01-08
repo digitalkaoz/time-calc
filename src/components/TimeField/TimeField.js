@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { TimePicker } from "material-ui-pickers";
-
 import { TimeHelper } from "../../connectors/redux/helpers";
 
 const timeMask = value => {
@@ -23,7 +22,12 @@ const TimeField = ({ input, label, showPicker, disabled, defaultValue }) => (
     onChange={date => input.onChange(TimeHelper.time(date))}
     keyboard
     label={label}
+    InputLabelProps={{
+      shrink: true,
+      htmlFor: label.replace(/ /g, "_").toLowerCase()
+    }}
     mask={timeMask}
+    name={label.replace(/ /g, "_").toLowerCase()}
     autoOk
     placeholder={defaultValue || TimeHelper.now()}
     disableOpenOnEnter
@@ -40,9 +44,6 @@ const TimeField = ({ input, label, showPicker, disabled, defaultValue }) => (
     invalidDateMessage="Invalid Time"
     showTodayButton
     // tabIndexIconButton="-1"
-    InputLabelProps={{
-      shrink: true
-    }}
   />
 );
 
