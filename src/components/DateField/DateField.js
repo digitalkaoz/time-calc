@@ -27,7 +27,7 @@ const DateField = ({ input, label, showPicker }) => (
     label={label}
     format="L"
     autoOk
-    name={label.replace(/ /g, "_").toLowerCase()}
+    id={label.replace(/ /g, "_").toLowerCase()}
     mask={dateMask}
     placeholder={TimeHelper.today()}
     disableOpenOnEnter
