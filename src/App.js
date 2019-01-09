@@ -52,7 +52,7 @@ const styles = () => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#0d47a1'
+      main: "#0d47a1"
     }
   },
   typography: {
@@ -60,57 +60,44 @@ const theme = createMuiTheme({
   }
 });
 
-class App extends React.PureComponent {
-  componentDidMount() {
-    const jssStyles = document.getElementById("jss-server-side");
-    if (jssStyles && jssStyles.parentNode) {
-      jssStyles.parentNode.removeChild(jssStyles);
-    }
-  }
-
-  render() {
-    const { title, classes, description } = this.props;
-
-    return (
-      <Provider store={createStore()}>
-        <MuiThemeProvider theme={theme}>
-          <Helmet>
-            <meta name="theme-color" content={theme.palette.primary.main} />
-            <script src="/register-service-worker.js" />
-            <title>{title}</title>
-            <meta name="description" content={description} />
-            <link rel="manifest" href="/manifest.json" />
-            <link rel="icon" type="image/png" href="/favicon.png" />
-            <link
-              rel="stylesheet"
-              href="//fonts.googleapis.com/icon?family=Material+Icons"
-            />
-            <link
-              rel="stylesheet"
-              href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
-            />
-          </Helmet>
-          <Grid container className={classes.root} spacing={16}>
-            <AppBar position="static" color="primary">
-              <Toolbar>
-                <Typography variant="h6" color="inherit">
-                  {title}
-                </Typography>
-              </Toolbar>
-            </AppBar>
-            <Grid item xs={12}>
-              <MuiPickersUtilsProvider utils={MomentUtils}>
-                <Form />
-              </MuiPickersUtilsProvider>
-            </Grid>
-            <Grid item xs={12}>
-              <TimeList />
-            </Grid>
-          </Grid>
-        </MuiThemeProvider>
-      </Provider>
-    );
-  }
-}
+const App = ({ title, classes, description }) => (
+  <Provider store={createStore()}>
+    <MuiThemeProvider theme={theme}>
+      <Helmet>
+        <meta name="theme-color" content={theme.palette.primary.main} />
+        <script src="/register-service-worker.js" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link
+          rel="stylesheet"
+          href="//fonts.googleapis.com/icon?family=Material+Icons"
+        />
+        <link
+          rel="stylesheet"
+          href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+        />
+      </Helmet>
+      <Grid container className={classes.root} spacing={16}>
+        <AppBar position="static" color="primary">
+          <Toolbar>
+            <Typography variant="h6" color="inherit">
+              {title}
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Grid item xs={12}>
+          <MuiPickersUtilsProvider utils={MomentUtils}>
+            <Form />
+          </MuiPickersUtilsProvider>
+        </Grid>
+        <Grid item xs={12}>
+          <TimeList />
+        </Grid>
+      </Grid>
+    </MuiThemeProvider>
+  </Provider>
+);
 
 export default withStyles(styles)(withSiteData(App));
