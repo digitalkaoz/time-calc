@@ -7,6 +7,10 @@ const WrappedTextField = ({ input, label }) => (
     value={input && input.value ? input.value : ""}
     onChange={value => input.onChange(value)}
     label={label}
+    id={label.toLowerCase()}
+    InputLabelProps={{
+      htmlFor: `${label.toLowerCase()}`
+    }}
     fullWidth
   />
 );

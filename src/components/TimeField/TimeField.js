@@ -27,7 +27,7 @@ const TimeField = ({ input, label, showPicker, disabled, defaultValue }) => (
       htmlFor: label.replace(/ /g, "_").toLowerCase()
     }}
     mask={timeMask}
-    name={label.replace(/ /g, "_").toLowerCase()}
+    id={label.replace(/ /g, "_").toLowerCase()}
     autoOk
     placeholder={defaultValue || TimeHelper.now()}
     disableOpenOnEnter
@@ -35,6 +35,7 @@ const TimeField = ({ input, label, showPicker, disabled, defaultValue }) => (
     todayLabel="Now"
     keyboardIcon="timer"
     ampm={false}
+    keepCharPositions
     InputAdornmentProps={{
       style: {
         display: showPicker === false ? "none" : "flex"
