@@ -1,3 +1,7 @@
+'use strict';
+
+/* eslint-env worker, serviceworker */
+
 importScripts('/service-worker.js');
 
 /*
@@ -12,8 +16,6 @@ importScripts('/service-worker.js');
  See the License for the specific language governing permissions and
  limitations under the License.
 */
-
-'use strict';
 
 // Incrementing CACHE_VERSION will kick off the install event and force previously cached
 // resources to be cached again.

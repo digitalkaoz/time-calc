@@ -16,8 +16,8 @@ export default () => ({
             name: "Timesheet",
             short_name: "Timesheet",
             start_url: "/",
-            background_color: "#2196f3",
-            theme_color: "#2196f3",
+            background_color: "#0d47a1",
+            theme_color: "#0d47a1",
             display: "minimal-ui",
             icons: [
               {
@@ -40,10 +40,10 @@ export default () => ({
         }),
         new ServiceWorkerPlugin({
           cacheId: "Timesheet",
-          handleFetch: true,
-          minify: true,
+          verbose: true,
+          handleFetch: isBuild,
+          minify: isBuild,
           navigateFallback: `/index.html`,
-          staticFileGlobs: ['/index.html'],
           staticFileGlobsIgnorePatterns: [/\.map$/, /\.jpeg$/, /\.jpg$/, /\.png$/, /\.mp4$/]
         })
       ];
