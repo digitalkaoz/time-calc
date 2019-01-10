@@ -841,17 +841,17 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@date-io/core@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-0.0.2.tgz#35be27d26eb652e752ccfbffe624c95169200dbd"
-  integrity sha512-rkanRee2Agpw3tZLaCGJxkNRzi7FdyqueQDmEZAgZfIQaPo0MoOrO0gcTGwhTNREV8+OBKiZLpbaHK79dsU/Wg==
+"@date-io/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.0.0.tgz#68036ea876109ee6416bc99ec0bc47aaf7c064b3"
+  integrity sha512-JYfDeHz1CQMGQmpnQTwP9LNjt9MfxwESIPLzd4aYBGamD0lTP73ztlpzY8McddaKgAaC2U6UvlGc+0Tpx6wWYA==
 
-"@date-io/moment@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-0.0.2.tgz#2020055c214fe5da7a6fc4741ebcb6a622ead6da"
-  integrity sha512-YrLDOHAZygZChOwXcr3D6W7Dusp7wLi3Y/pt6ZgxDOnX1iNlO+M7qjZ3PdD+vH0v2xlzEg2n2rZ67QschAIiKQ==
+"@date-io/moment@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.0.0.tgz#df4fa51f6aa8483e50d3e10e0cd7bccdd82af530"
+  integrity sha512-ncE2GFazbz2+4SncMPoUT8P4GXFTyL2i/KKs83u0O3B1A1H6ROH3mE816nXjpthw67gLuBf6ZMHoD/tqADtYYw==
   dependencies:
-    "@date-io/core" "^0.0.2"
+    "@date-io/core" "^1.0.0"
 
 "@hot-loader/react-dom@^16.7.0-alpha.2.3":
   version "16.7.0"
