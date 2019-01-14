@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@date-io/moment": "^0.0.2",
-    "@material-ui/core": "^3.0.1",
+    "@material-ui/core": "^3.9.0",
     "@material-ui/icons": "^3.0.1",
     "json2csv": "^4.2.1",
     "material-ui-pickers": "^2.0.0",
