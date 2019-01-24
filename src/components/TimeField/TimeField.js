@@ -33,13 +33,16 @@ const TimeField = ({ input, label, showPicker, disabled, defaultValue }) => (
     disableOpenOnEnter
     fullWidth
     todayLabel="Now"
-    keyboardIcon="timer"
+    keyboardIcon="alarm"
     ampm={false}
     keepCharPositions
     InputAdornmentProps={{
       style: {
         display: showPicker === false ? "none" : "flex"
       },
+    }}
+    KeyboardButtonProps={{
+      "aria-label": label
     }}
     disabled={disabled}
     invalidDateMessage="Invalid Time"

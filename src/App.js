@@ -65,7 +65,6 @@ const App = ({ title, classes, description }) => (
     <MuiThemeProvider theme={theme}>
       <Helmet>
         <meta name="theme-color" content={theme.palette.primary.main} />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no" />
         <script src="/register-service-worker.js" />
         <title>{title}</title>
         <meta name="description" content={description} />

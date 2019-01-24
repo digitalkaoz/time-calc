@@ -37,6 +37,9 @@ const DateField = ({ input, label, showPicker }) => (
       shrink: true,
       htmlFor: label.replace(/ /g, "_").toLowerCase()
     }}
+    KeyboardButtonProps={{
+      "aria-label": label
+    }}
   />
 );
 
