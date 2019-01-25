@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { DatePicker } from "material-ui-pickers";
+import Icon from '@material-ui/core/Icon';
 
 import { TimeHelper } from "../../connectors/redux/helpers";
 
@@ -33,6 +34,7 @@ const DateField = ({ input, label, showPicker }) => (
     disableOpenOnEnter
     fullWidth
     showTodayButton
+    keyboardIcon={<Icon color="primary">event</Icon>}
     InputLabelProps={{
       shrink: true,
       htmlFor: label.replace(/ /g, "_").toLowerCase()

@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { TimePicker } from "material-ui-pickers";
+import Icon from '@material-ui/core/Icon';
+
 import { TimeHelper } from "../../connectors/redux/helpers";
 
 const timeMask = value => {
@@ -33,7 +35,7 @@ const TimeField = ({ input, label, showPicker, disabled, defaultValue }) => (
     disableOpenOnEnter
     fullWidth
     todayLabel="Now"
-    keyboardIcon="alarm"
+    keyboardIcon={<Icon color="primary">timer</Icon>}
     ampm={false}
     keepCharPositions
     InputAdornmentProps={{

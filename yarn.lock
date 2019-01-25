@@ -5870,7 +5870,7 @@ match-sorter@^2.2.3:
   dependencies:
     diacritic "0.0.2"
 
-material-ui-pickers@^2.0.0:
+material-ui-pickers@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/material-ui-pickers/-/material-ui-pickers-2.1.2.tgz#8e4dfaed63bdd1bc537bd3b60f450130cf3db400"
   integrity sha512-e0E/oZ+ETceVX8Af3Z2K6L+MTy5JUVQ/qKSeFAY1d9sti0Ix6zMLwaNpg2WurpLnis32yUKjqzEqOGbOkaDQow==
