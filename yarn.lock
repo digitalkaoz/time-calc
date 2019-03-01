@@ -2290,10 +2290,10 @@ cliui@^4.0.0:
     strip-ansi "^4.0.0"
     wrap-ansi "^2.0.0"
 
-clsx@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.0.1.tgz#6d956b00ecc771185bf0ec47383f5a06d941b11f"
-  integrity sha512-PtvbklBG/M2NVzwaYqTGcD+EqMXLNrec1lpgNkz07CoOsYnXsCBjde24Tki8wBKi9jrWX2rJnmKoMJoYUc3zhQ==
+clsx@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.0.3.tgz#e164004f4064b372888f20fdafbd436fb960bac9"
+  integrity sha512-xLoSw6DMp7YvbEeLrQJBcWWRRerdHrU1WHoL1hYJOKUeDpVMRq7pv7NI2JHQbCRAe5ptINNzhdYmtfN6MsdCUw==
 
 co@^4.6.0:
   version "4.6.0"
@@ -5870,14 +5870,14 @@ match-sorter@^2.2.3:
   dependencies:
     diacritic "0.0.2"
 
-material-ui-pickers@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/material-ui-pickers/-/material-ui-pickers-2.1.2.tgz#8e4dfaed63bdd1bc537bd3b60f450130cf3db400"
-  integrity sha512-e0E/oZ+ETceVX8Af3Z2K6L+MTy5JUVQ/qKSeFAY1d9sti0Ix6zMLwaNpg2WurpLnis32yUKjqzEqOGbOkaDQow==
+material-ui-pickers@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/material-ui-pickers/-/material-ui-pickers-2.2.2.tgz#f2ef3089dcb5893bc328208df254dd521fdba852"
+  integrity sha512-njO5e0xh4nqffjl8yzFZcFAtzFsMLTXXyr9SILq3BNQ1vgsbwbAwElTAPauac2CJK5y2FjoQp8oQFmLpbfPqoQ==
   dependencies:
     "@types/react-text-mask" "^5.4.3"
-    clsx "^1.0.1"
-    react-event-listener "^0.6.5"
+    clsx "^1.0.2"
+    react-event-listener "^0.6.6"
     react-text-mask "^5.4.3"
     react-transition-group "^2.5.3"
     tslib "^1.9.3"
@@ -7540,12 +7540,21 @@ react-error-overlay@^5.1.0:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.2.tgz#888957b884d4b25b083a82ad550f7aad96585394"
   integrity sha512-7kEBKwU9R8fKnZJBRa5RSIfay4KJwnYvKB6gODGicUmDSAhQJ7Tdnll5S0RLtYrzRfMVXlqYw61rzrSpP4ThLQ==
 
-react-event-listener@^0.6.2, react-event-listener@^0.6.5:
+react-event-listener@^0.6.2:
   version "0.6.5"
   resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.5.tgz#d374dbe5da485c9f9d4702f0e76971afbe9b6b2e"
   integrity sha512-//lCxOM3DQ0+xmTa/u9mI9mm55zCPdIKp89d8MGjlNsOOnXQ5sFDD1eed+sMBzQXKiRBLBMtSg/2T9RJFtfovw==
   dependencies:
     "@babel/runtime" "7.2.0"
+    prop-types "^15.6.0"
+    warning "^4.0.1"
+
+react-event-listener@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/react-event-listener/-/react-event-listener-0.6.6.tgz#758f7b991cad9086dd39fd29fad72127e1d8962a"
+  integrity sha512-+hCNqfy7o9wvO6UgjqFmBzARJS7qrNoda0VqzvOuioEpoEXKutiKuv92dSz6kP7rYLmyHPyYNLesi5t/aH1gfw==
+  dependencies:
+    "@babel/runtime" "^7.2.0"
     prop-types "^15.6.0"
     warning "^4.0.1"
 
