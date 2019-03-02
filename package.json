@@ -13,7 +13,7 @@
     "@material-ui/core": "^3.0.1",
     "@material-ui/icons": "^3.0.1",
     "json2csv": "^4.2.1",
-    "material-ui-pickers": "^2.1.2",
+    "material-ui-pickers": "^2.2.3",
     "moment": "^2.22.2",
     "moment-duration-format": "^2.2.2",
     "react-autobind": "^1.0.6",
