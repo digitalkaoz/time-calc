@@ -18,7 +18,8 @@ import {
   createMuiTheme,
   withStyles
 } from "@material-ui/core/styles";
-import blue from "@material-ui/core/colors/blue";
+
+import 'typeface-roboto';
 
 //TODO flip out momentjs
 import MomentUtils from "@date-io/moment";
@@ -65,19 +66,22 @@ const App = ({ title, classes, description }) => (
     <MuiThemeProvider theme={theme}>
       <Helmet>
         <meta name="theme-color" content={theme.palette.primary.main} />
-        <script src="/register-service-worker.js" />
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="manifest" href="/manifest.json" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link
           rel="stylesheet"
-          href="//fonts.googleapis.com/icon?family=Material+Icons"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
-        <link
-          rel="stylesheet"
-          href="//fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
-        />
+              <script type="module">{`import {Workbox} from 'https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-window.prod.mjs';
+if ('serviceWorker' in navigator) {
+  const wb = new Workbox('/timesheet.js');
+
+  wb.register();
+}
+`}</script>
+
       </Helmet>
       <Grid container className={classes.root} spacing={16}>
         <AppBar position="static" color="primary">

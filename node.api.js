@@ -1,5 +1,5 @@
 import ManifestPlugin from "webpack-manifest-plugin";
-import ServiceWorkerPlugin from "sw-precache-webpack-plugin";
+import { InjectManifest } from "workbox-webpack-plugin";
 
 const isBuild = process.env.NODE_ENV === "production";
 
@@ -38,13 +38,9 @@ export default () => ({
             ]
           }
         }),
-        new ServiceWorkerPlugin({
-          cacheId: "Timesheet",
-          verbose: true,
-          handleFetch: isBuild,
-          minify: isBuild,
-          navigateFallback: `/index.html`,
-          staticFileGlobsIgnorePatterns: [/\.map$/, /\.jpeg$/, /\.jpg$/, /\.png$/, /\.mp4$/]
+        new InjectManifest({
+          importWorkboxFrom: "local",
+          swSrc: "./public/timesheet.js",
         })
       ];
 

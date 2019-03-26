@@ -22,12 +22,13 @@
     "react-redux": "^6.0.0",
     "react-static": "^6.0.0",
     "react-static-plugin-jss": "^6.1.1",
-    "react-universal-component": "^3.0.0",
+    "react-universal-component": "^4.0.0",
     "redux": "^4.0.0",
     "redux-batched-actions": "^0.4.0",
     "redux-form": "^8.1.0",
     "redux-saga": "^1.0.0",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.0.0",
@@ -36,6 +37,7 @@
     "sw-precache-webpack-plugin": "^0.11.5",
     "webpack-manifest-plugin": "^2.0.3",
     "webpack-visualizer-plugin": "^0.1.11",
-    "why-did-you-update": "^1.0.0"
+    "why-did-you-update": "^1.0.0",
+    "workbox-webpack-plugin": "^4.1.1"
   }
 }
