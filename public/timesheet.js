@@ -10,6 +10,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 
 const cacheName = workbox.core.cacheNames.runtime;
 
+console.log(cacheName);
 const cacheFirst = (path) => {
   workbox.routing.registerRoute(
     path,

@@ -1,6 +1,7 @@
 # Time Calculator
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/digitalkaoz/time-calc.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/digitalkaoz/time-calc.svg?branch=master)](https://travis-ci.org/digitalkaoz/time-calc)
 
 https://time-calc.digitalkaoz.net
 
@@ -8,9 +9,9 @@ https://time-calc.digitalkaoz.net
 
 > all the fancy stuff out there ;)
 
-* react (unejected react-app)
-* redux+saga
-* service-worker (works perfectly as PWA)
+* react-static
+* redux+sagas
+* workbox for PWA
 * material-ui
 
 ## Features
