@@ -2,15 +2,25 @@
 
 //import workbox from "@types/workbox-sw";
 
-if (typeof workbox === "undefined") {
-  importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.1.1/workbox-sw.js');
-}
-
 workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 
 const cacheName = workbox.core.cacheNames.runtime;
 
-console.log(cacheName);
+workbox.routing.registerRoute(
+  new RegExp('https://fonts.(?:googleapis|gstatic).com/(.*)'),
+  workbox.strategies.cacheFirst({
+    cacheName: 'google-fonts',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 30,
+      }),
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200]
+      }),
+    ],
+  }),
+);
+
 const cacheFirst = (path) => {
   workbox.routing.registerRoute(
     path,
@@ -37,5 +47,4 @@ const networkFirst = (path) => {
 
 cacheFirst('/manifest.json');
 cacheFirst('https://storage.googleapis.com/workbox-cdn/releases/4.0.0/workbox-window.prod.mjs');
-cacheFirst('https://fonts.googleapis.com/icon?family=Material+Icons');
 networkFirst(/\/$/);
