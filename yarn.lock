@@ -3518,7 +3518,7 @@ eslint-config-prettier@^2.9.0:
   dependencies:
     get-stdin "^5.0.1"
 
-eslint-config-react-tools@1.x.x, eslint-config-react-tools@^1.0.0:
+eslint-config-react-tools@1.x.x:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/eslint-config-react-tools/-/eslint-config-react-tools-1.1.6.tgz#dcbd067db5950a37210589f1947613ec4de58df6"
   integrity sha1-3L0GfbWVCjchBYnxlHYT7E3ljfY=
@@ -7637,10 +7637,10 @@ react-static-plugin-jss@^6.1.1:
   resolved "https://registry.yarnpkg.com/react-static-plugin-jss/-/react-static-plugin-jss-6.3.0.tgz#ebc0e10b043c4f691589e4a9dadde5bc99d57183"
   integrity sha512-dr7106pf5OcKj6aAuA8pMdb+8J2qcGSX8GeQjaRZm2Z+Hh8QyP1zzFtS81z6lsLscf/1SDVjeSEq2Xh13G7bTA==
 
-react-static@^6.0.0:
-  version "6.3.6"
-  resolved "https://registry.yarnpkg.com/react-static/-/react-static-6.3.6.tgz#e9d44e1e289fd31200646c6695f24d646a9d862a"
-  integrity sha512-p7lR5ZrVizmXh91Mvo3n7wTKV71wQTwpMSor22TujZFl7/p7U7gSxdo9OJw6ntZaFhjccXO9CNVheNffWMGXww==
+react-static@^6.3.8:
+  version "6.3.8"
+  resolved "https://registry.yarnpkg.com/react-static/-/react-static-6.3.8.tgz#c11333acf944e3185da7d6e9525c606dc9548918"
+  integrity sha512-f+BJsLvfmFG7z1Fi/Zv4YdMq1x4Th0yXeaw73pXnzTw/danM4wcxxrisM0yzpA0fLFkzEEvpumHxoS90o2SaGA==
   dependencies:
     "@babel/cli" "^7.1.5"
     "@babel/core" "^7.2.2"
@@ -7671,7 +7671,6 @@ react-static@^6.0.0:
     cors "^2.8.5"
     css-loader "^2.0.1"
     download-git-repo "^1.1.0"
-    eslint-config-react-tools "^1.0.0"
     extract-css-chunks-webpack-plugin "^3.2.1"
     file-loader "2.0.0"
     fs-extra "^7.0.1"
