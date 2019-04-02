@@ -7632,10 +7632,10 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
-react-static-plugin-jss@^6.1.1:
-  version "6.3.0"
-  resolved "https://registry.yarnpkg.com/react-static-plugin-jss/-/react-static-plugin-jss-6.3.0.tgz#ebc0e10b043c4f691589e4a9dadde5bc99d57183"
-  integrity sha512-dr7106pf5OcKj6aAuA8pMdb+8J2qcGSX8GeQjaRZm2Z+Hh8QyP1zzFtS81z6lsLscf/1SDVjeSEq2Xh13G7bTA==
+react-static-plugin-jss@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/react-static-plugin-jss/-/react-static-plugin-jss-7.0.0.tgz#6c3035a5ad87d3bda5f6d3250dcf61f87da0e754"
+  integrity sha512-2fENZYMOuNKLW1rzujMPyjeMigTf7J98Y6ZUPpJdKfuQAn2ubBLzfEZJHBlI43jCwmEk6QSFs0yG7GVBuFSJOg==
 
 react-static@^6.0.0:
   version "6.3.6"
