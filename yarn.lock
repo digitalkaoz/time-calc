@@ -845,17 +845,17 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@date-io/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.1.0.tgz#b7b8fbd9b5e57cc6b55a5af2d98394eafdf42921"
-  integrity sha512-PyjhyR2fbp7Q8xpB5zoOyT3dqr8Bn4kXfREf1w6AnQalwdftNxChB2/p88fI1qsx8KNmHDJY12eCgLoZaPegTw==
+"@date-io/core@^1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
+  integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
-"@date-io/moment@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.1.0.tgz#993c71b77f52f078de6a28e61ddfae757d39dc64"
-  integrity sha512-U7Vrhk7nlrKMtlLuNs7DAWmMsMBTgWFAvgpKg6Z5Opo/U7ab5DvI8nLks5dqJbeEFQDSlO+KCmJWfsL9hVI3Jw==
+"@date-io/moment@^1.3.13":
+  version "1.3.13"
+  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.3.13.tgz#56c2772bc4f6675fc6970257e6033e7a7c2960f0"
+  integrity sha512-3kJYusJtQuOIxq6byZlzAHoW/18iExJer9qfRF5DyyzdAk074seTuJfdofjz4RFfTd/Idk8WylOQpWtERqvFuQ==
   dependencies:
-    "@date-io/core" "^1.1.0"
+    "@date-io/core" "^1.3.13"
 
 "@hot-loader/react-dom@^16.7.0-alpha.2.3":
   version "16.8.6"
