@@ -34,7 +34,7 @@
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "eslint-config-react-tools": "1.x.x",
     "redux-logger": "^3.0.6",
-    "sw-precache-webpack-plugin": "^0.11.5",
+    "sw-precache-webpack-plugin": "^1.0.0",
     "webpack-manifest-plugin": "^2.0.3",
     "webpack-visualizer-plugin": "^0.1.11",
     "why-did-you-update": "^1.0.0",
