@@ -852,17 +852,17 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@date-io/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.1.0.tgz#b7b8fbd9b5e57cc6b55a5af2d98394eafdf42921"
-  integrity sha512-PyjhyR2fbp7Q8xpB5zoOyT3dqr8Bn4kXfREf1w6AnQalwdftNxChB2/p88fI1qsx8KNmHDJY12eCgLoZaPegTw==
+"@date-io/core@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@date-io/core/-/core-2.1.0.tgz#7ce2bec7a93c4525e7c016eaabf3e571dee8029f"
+  integrity sha512-akcCcYmHXkRp9uSqvNGvnMJbbcoD3Wo+NfswETfzXPkVviIFz2TVN8g5D/kwM5ZkiEo4t7nyBkpuYtNzv1WVdg==
 
-"@date-io/moment@^1.0.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-1.1.0.tgz#993c71b77f52f078de6a28e61ddfae757d39dc64"
-  integrity sha512-U7Vrhk7nlrKMtlLuNs7DAWmMsMBTgWFAvgpKg6Z5Opo/U7ab5DvI8nLks5dqJbeEFQDSlO+KCmJWfsL9hVI3Jw==
+"@date-io/moment@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@date-io/moment/-/moment-2.1.0.tgz#cc6aeff8fe5250e2423e748bb279b565f7fb2c8a"
+  integrity sha512-/iW3voYQ4ZQLTNqpY2pLzb7/nhNLjvF+J9TApEFU9M+ci1YcgPsib1sWBzMdbta5O1pB2d8EElfvXRq2vWQsww==
   dependencies:
-    "@date-io/core" "^1.1.0"
+    "@date-io/core" "^2.1.0"
 
 "@hot-loader/react-dom@^16.7.0-alpha.2.3":
   version "16.8.6"
@@ -9221,10 +9221,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-typeface-roboto@^0.0.54:
-  version "0.0.54"
-  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.54.tgz#8f02c9a18d1cfa7f49381a6ff0d21ff061f38ad2"
-  integrity sha512-sOFA1FXgP0gOgBYlS6irwq6hHYA370KE3dPlgYEJHL3PJd5X8gQE0RmL79ONif6fL5JZuGDj+rtOrFeOqz5IZQ==
+typeface-roboto@^0.0.75:
+  version "0.0.75"
+  resolved "https://registry.yarnpkg.com/typeface-roboto/-/typeface-roboto-0.0.75.tgz#98d5ba35ec234bbc7172374c8297277099cc712b"
+  integrity sha512-VrR/IiH00Z1tFP4vDGfwZ1esNqTiDMchBEXYY9kilT6wRGgFoCAlgkEUMHb1E3mB0FsfZhv756IF0+R+SFPfdg==
 
 typescript-compare@^0.0.2:
   version "0.0.2"
